@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="item-slick1" style="background-image: url(modules/shop/images/StockSnap_R33KBON2SV.jpg);">
+      <div class="item-slick1" style="background-image: url(modules/shop/images/woman-with-bag.jpg);">
         <div class="container h-full">
           <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
             <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">

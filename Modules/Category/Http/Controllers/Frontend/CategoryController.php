@@ -13,6 +13,11 @@ class CategoryController extends Controller
 
     public function product($slug)
     {
+      $category = new Category;
+      if($categories = $category->getAllRelatedCategories($slug)) {
+        return view('category::frontend.subcategory')->withCategories($categories);
+      }
+
         $category = Category::where('slug',$slug)->first();
         $products = Product::where('category_id',$category->id)->orderBy('id','desc')->paginate(20);
         return view('category::frontend.products')->withProducts($products)

@@ -25,7 +25,8 @@ class CategoryController extends Controller
   */
   public function create()
   {
-    return view('category::create');
+    $categories = Category::all();
+    return view('category::create')->withCategories($categories);
   }
 
   /**
@@ -42,6 +43,8 @@ class CategoryController extends Controller
       'number_high' => 'required|integer',
     ));
     $categories = Category::all();
+    $slug = str_slug($request->name, "-");
+
     foreach($categories as $category) {
       if((request('number_low') >= $category->number_low && request('number_low') <= $category->number_high) ||
       (request('number_high') >= $category->number_low && request('number_high') <= $category->number_high)) {
@@ -51,7 +54,7 @@ class CategoryController extends Controller
       }
     }
 
-    $category = Category::create(['name' => request('name'),'number_low' => request('number_low'),'number_high' => request('number_high')]);
+    $category = Category::create(['name' => request('name'),'slug' => $slug,'head_category_id' => request('head_category_id'),'number_low' => request('number_low'),'number_high' => request('number_high')]);
     /*          if(request('sizes')) {
     $size_array = array();
     $i = 0;
@@ -94,8 +97,11 @@ public function show($id)
 */
 public function edit($id)
 {
+  $cats = Category::all();
+
   $category = Category::find($id);
-  return view('category::edit')->withCategory($category);
+  return view('category::edit')->withCategory($category)
+  ->withCategories($cats);
 }
 
 /**
@@ -110,20 +116,23 @@ public function update(Request $request,$id)
   'number_low' => 'required|integer',
   'number_high' => 'required|integer',
   ));
+  $category_ins = Category::find($id);
+  $slug = str_slug($request->name, "-");
   $categories = Category::all();
   foreach($categories as $category) {
+    if($category->id !== $category_ins->id) {
     if((request('number_low') >= $category->number_low && request('number_low') <= $category->number_high) ||
     (request('number_high') >= $category->number_low && request('number_high') <= $category->number_high)) {
       $request->session()
       ->flash('error',"Numara aralığı doğru değil");
       return redirect()->back();
     }
+    }
   }
-  $category = Category::find($request->$id);
-  $category->update(['name' => request('name'),'number_low' => request('number_low'),'number_high' => request('number_high')]);
+  $category_ins->update(['name' => request('name'),'slug' => $slug,'head_category_id'=>request('head_category_id'),'number_low' => request('number_low'),'number_high' => request('number_high')]);
 
   $request->session()
-  ->flash('success',"Kategori $category->name Başarı ile Değiştirildi");
+  ->flash('success',"Kategori $category_ins->name Başarı ile Değiştirildi");
   return redirect()->back();
 
 }

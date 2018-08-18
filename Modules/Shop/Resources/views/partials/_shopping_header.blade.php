@@ -34,7 +34,7 @@
 
         <!-- Logo desktop -->
         <a href="{{route('shop.index')}}" class="logo">
-          <h5><strong>PETIT</strong></h5>
+          <img src="{{asset('modules/shop/images/logos/petit-butix.jpg')}}" class="rounded-circle" alt="sds">
         </a>
 
         <!-- Menu desktop -->
@@ -46,9 +46,16 @@
             <li>
               <a href="{{route('shop.contact')}}">{{__('views.shop.menu_contact')}}</a>
             </li>
+            <li class="">
+              <a href="#">Kategoriler</a>
+              <ul class="sub-menu">
+                @foreach(Modules\Category\Entities\Category::where('head_category_id',null)->get() as $category )
+                <li><a href="{{route('categories.products',$category->slug)}}">{{$category->name}}</a></li>
+              @endforeach
+              </ul>
+            </li>
           </ul>
         </div>
-
         <!-- Icon header -->
         <div class="wrap-icon-header flex-w flex-r-m">
           <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
