@@ -34,7 +34,7 @@
 
         <!-- Logo desktop -->
         <a href="{{route('shop.index')}}" class="logo">
-          <h5><strong>BEHİCE SGLM</strong></h5>
+          <h5><strong>PETIT</strong></h5>
         </a>
 
         <!-- Menu desktop -->
