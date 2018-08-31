@@ -162,6 +162,6 @@
 </div>
 @endsection
 @section('shop_scripts')
+	
 	@include('shop::partials._shopping_javascript')
-
 @endsection

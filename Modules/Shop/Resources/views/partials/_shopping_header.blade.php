@@ -159,7 +159,7 @@
       <button class="flex-c-m trans-04">
         <i class="zmdi zmdi-search"></i>
       </button>
-      <input class="plh3" type="text" name="search" value="{{request()->input('query')}}" placeholder="Ara...">
+      <input class="plh3" type="text" name="search"  value="{{request()->input('query')}}" placeholder="Ara...">
     </form>
   </div>
 </div>

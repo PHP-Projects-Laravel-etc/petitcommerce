@@ -143,96 +143,119 @@ public function setAction(Request $request)
     ->flash('error','Böyle bir ürün yoktur');
     return redirect()->back();
   }
+}
+
+
+
+public function edit($slug)
+{
+  $units2 = Unit::allInArray();
+  $cats = Category::allInArray();
+  $product = Product::where('slug',$slug)->first();
+  return view('product::edit')->withProduct($product)
+  ->withCategories($cats)
+  ->withUnits($units2);
+}
+
+/**
+* Update the specified resource in storage.
+* @param  Request $request
+* @return Response
+*/
+public function update(Request $request,$id)
+{
+  $request->validate(array(
+  'name' => 'required|max:50',
+  'category_id' => 'required',
+  'unit_id' => 'required',
+  'price' => 'required',
+  ));
+  $product = Product::find($id);
+  $product->name = $request->name;
+  $product->price = $request->price;
+  $product->details = $request->details;
+  $product->category_id = $request->category_id;
+  $product->unit_id = $request->unit_id;
+  $slug = str_slug($request->name, "-");
+  $product->slug = $slug;
+  $product->save();
+  return view('product::product-action')->with('success',"Ürün Başarı ile Güncellendi");
+
+}
+
+/**
+* Remove the specified resource from storage.
+* @return Response
+*/
+public function destroy($slug)
+{
+  $product = Product::where('slug',$slug)->first();
+  $product->update(['deleted'=>1]);
+  return back();
+}
+
+public function resurrect($slug)
+{
+  $product = Product::where('slug',$slug)->first();
+  $product->update(['deleted'=>0]);
+  return back();
+}
+
+
+
+public function imageUpload(Request $request)
+{
+  if ($request->hasFile('file')) {
+    $image=$request->file('file');
+    $filename = $image->getClientOriginalName();
+    $location = public_path('images/' . $filename);
+    Image::make($image)->resize(100, 100)->save($location);
   }
+}
 
 
 
-  public function edit($slug)
-  {
-    $units2 = Unit::allInArray();
-    $cats = Category::allInArray();
-    $product = Product::where('slug',$slug)->first();
-    return view('product::edit')->withProduct($product)
-    ->withCategories($cats)
-    ->withUnits($units2);
+public function fileDestroy(Request $request)
+{
+  $filename =  request('filename');
+  $path=public_path().'/images/'.$filename;
+  if (file_exists($path)) {
+    unlink($path);
   }
+  return $filename;
+}
 
-  /**
-  * Update the specified resource in storage.
-  * @param  Request $request
-  * @return Response
-  */
-  public function update(Request $request,$id)
+public function searchResult(Request $request)
+{
+
+  $query = $request->input('search');
+  $products = Product::where('name','like',"%$query%")->get();
+  return view('shop::search-results')->withProducts($products)
+  ->withQuery($query);
+}
+
+public function productSearchAdmin(Request $request){
+  $output="";
+  $products=Product::where('name','LIKE','%'.$request->search."%")->get();
+  if($products)
   {
-    $request->validate(array(
-    'name' => 'required|max:50',
-    'category_id' => 'required',
-    'unit_id' => 'required',
-    'price' => 'required',
-    ));
-    $product = Product::find($id);
-    $product->name = $request->name;
-    $product->price = $request->price;
-    $product->details = $request->details;
-    $product->category_id = $request->category_id;
-    $product->unit_id = $request->unit_id;
-    $slug = str_slug($request->name, "-");
-    $product->slug = $slug;
-    $product->save();
-    return view('product::product-action')->with('success',"Ürün Başarı ile Güncellendi");
+    foreach ($products as $product) {
+      foreach($product->sizes as $size) {
+        $output.='<tr>'.
+          '<th>'.$product->product_id .'</th>'.
+          '<td>'. $product->name .'</td>'.
+          '<td>'. $product->product_id.$size->id .'</td>'.
+          '<td>'. $size->attribute_long .'</td>'.
+          '<td>'. $product->colors()->where('color_id',$size->pivot->color_id)->first()->attribute_long. '</td>'.
+          '<td>'. $product->category->name .'</td>'.
+          '<td>'. $size->pivot->stock .'</td>'.
+          '<td>'. $product->unit->name.'</td>'.
+          '<td>'. $product->price .' TL</td>'.
+          '</tr>';
+        }
+      }
 
-  }
-
-  /**
-  * Remove the specified resource from storage.
-  * @return Response
-  */
-  public function destroy($slug)
-  {
-    $product = Product::where('slug',$slug)->first();
-    $product->update(['deleted'=>1]);
-    return back();
-  }
-
-  public function resurrect($slug)
-  {
-    $product = Product::where('slug',$slug)->first();
-    $product->update(['deleted'=>0]);
-    return back();
-  }
-
-
-
-  public function imageUpload(Request $request)
-  {
-    if ($request->hasFile('file')) {
-      $image=$request->file('file');
-      $filename = $image->getClientOriginalName();
-      $location = public_path('images/' . $filename);
-      Image::make($image)->resize(100, 100)->save($location);
+      return Response($output);
     }
   }
-
-
-
-  public function fileDestroy(Request $request)
-  {
-    $filename =  request('filename');
-    $path=public_path().'/images/'.$filename;
-    if (file_exists($path)) {
-      unlink($path);
-    }
-    return $filename;
-  }
-
-  public function searchResult(Request $request)
-  {
-
-    $query = $request->input('search');
-    $products = Product::where('name','like',"%$query%")->get();
-    return view('shop::search-results')->withProducts($products)
-    ->withQuery($query);
-  }
-
-
 }

@@ -3,7 +3,7 @@
 	{{ Html::style(mix('assets/common/css/parsley.css')) }}
 @section('title','ÜRÜN |')
 @section('content')
-	<body class="animsition">
+<body class="animsition">
 
 		<!-- Header -->
 		@include('shop::partials._shopping_header')
@@ -43,8 +43,8 @@
 								<div class="slick3 gallery-lb">
 									<div class="item-slick3" data-thumb="{{asset('images/products/' . $product->images()->mainImage()->name)}}">
 										<div class="wrap-pic-w pos-relative">
-											<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" class="product-detail-photos" alt="IMG-PRODUCT">
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}">
+											<img src="{{asset('images/products/' . $product->images()->mainImage()->name)}}" class="product-detail-photos" alt="IMG-PRODUCT">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/products/' . $product->images()->mainImage()->name)}}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>

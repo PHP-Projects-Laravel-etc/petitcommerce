@@ -49,4 +49,11 @@ class ProductController extends Controller
     }
     return $attr;
   }
+
+  public function products(){
+    $products = Product::select('name')->get();
+    return $products;
+  }
+
+  
 }

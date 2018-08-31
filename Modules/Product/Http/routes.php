@@ -33,4 +33,12 @@ Route::group(['middleware' => ['web',], 'prefix' => 'products', 'namespace' => '
 Route::group(['middleware' => ['web',], 'prefix' => 'api', 'namespace' => 'Modules\Product\Http\Controllers\Frontend'], function()
 {
   Route::get('/attributes/{slug}/{attr_id}/{attr}', 'ProductController@attributes');
+  Route::get('/products', 'ProductController@products');
+  Route::get('/search', 'ProductController@sproductSearchForAdmin');
+});
+
+
+Route::group(['middleware' => ['web',], 'prefix' => 'api', 'namespace' => 'Modules\Product\Http\Controllers\Backend'], function()
+{
+  Route::get('/searchProducts', 'ProductController@productSearchAdmin');
 });

@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function product($slug)
     {
       $category = new Category;
-      if($categories = $category->getAllRelatedCategories($slug)) {
+      if(count($categories = $category->getAllRelatedCategories($slug))>0) {
         return view('category::frontend.subcategory')->withCategories($categories);
       }
 
