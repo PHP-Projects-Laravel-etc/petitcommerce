@@ -1,5 +1,5 @@
 @extends('shop::layouts.master')
-@section('title','MAĞAZA|')
+@section('title','PETIT MAĞAZA |')
 @section('content')
 	<body class="animsition">
 		<!-- Header -->
@@ -162,6 +162,6 @@
 </div>
 @endsection
 @section('shop_scripts')
-	
+
 	@include('shop::partials._shopping_javascript')
 @endsection

@@ -78,7 +78,7 @@
 <div class="wrap-header-mobile">
   <!-- Logo moblie -->
   <div class="logo-mobile">
-    <a href="{{route('shop.index')}}"><h3>BehiceSglm</a>
+    <a href="{{route('shop.index')}}"><h3>PETITSTORE</a>
   </div>
 
   <!-- Icon header -->
