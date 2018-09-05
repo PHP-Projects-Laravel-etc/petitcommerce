@@ -174,28 +174,19 @@
       <a href="{{route('shop.index')}}">{{__('views.shop.menu_home')}}</a>
     </li>
     <li class="">
-      <a href="#">Erkek</a>
-      <ul class="sub-menu">
         @foreach(Modules\Category\Entities\Category::where('head_category_id',2)->get() as $category )
         <li><a href="{{route('categories.products',$category->slug)}}">{{$category->name}}</a></li>
       @endforeach
-      </ul>
     </li>
     <li class="">
-      <a href="#">Kadın</a>
-      <ul class="sub-menu">
         @foreach(Modules\Category\Entities\Category::where('head_category_id',3)->get() as $category )
         <li><a href="{{route('categories.products',$category->slug)}}">{{$category->name}}</a></li>
       @endforeach
-      </ul>
     </li>
     <li class="">
-      <a href="#">Unisex</a>
-      <ul class="sub-menu">
         @foreach(Modules\Category\Entities\Category::where('head_category_id',4)->get() as $category )
         <li><a href="{{route('categories.products',$category->slug)}}">{{$category->name}}</a></li>
       @endforeach
-      </ul>
     </li>
     <li class="">
       <a href="#">Çanta</a>
