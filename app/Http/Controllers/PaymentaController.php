@@ -50,7 +50,7 @@ class PaymentaController extends Controller
   $request->setCurrency(\Iyzipay\Model\Currency::TL);
   $request->setBasketId("B67832");
   $request->setPaymentGroup(\Iyzipay\Model\PaymentGroup::PRODUCT);
-  $request->setCallbackUrl("http://localhost:8000/payment/callback");
+  $request->setCallbackUrl(env("IYIZICO_CALLBACKURL"));
   $request->setEnabledInstallments(array(2, 3, 6, 9));
   $buyer = new \Iyzipay\Model\Buyer();
   $buyer->setId("BY789");

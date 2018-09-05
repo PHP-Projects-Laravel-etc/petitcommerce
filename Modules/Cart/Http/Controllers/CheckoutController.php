@@ -47,7 +47,7 @@ class CheckoutController extends Controller
       $checkoutForm = \Iyzipay\Model\CheckoutForm::retrieve($request, $iyzico_options);
       # print result
       $user = User::find(Auth::user()->id);
-      $shoppingPay->getPayment($checkoutForm);
+      $a = $shoppingPay->getPayment($checkoutForm);
       $status = $checkoutForm->getStatus();
 
       return view('cart::checkout.result')->withStatus($status);
