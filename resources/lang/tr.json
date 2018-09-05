@@ -256,5 +256,6 @@
   "views.shop_search" : "Ara",
   "views.shop_filter" : "Bütün Kategoriler",
   "**************************** Frontrnd Footer**********************": "Footer",
-  "views.frontend.footer.menu_categories": "KATEGORİLER"
+  "views.frontend.footer.menu_categories": "KATEGORİLER",
+  "views.frontend.footer.wnat_to_work_with_us" : "Bizimle Çalışmak ister misiniz?"
 }
