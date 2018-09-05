@@ -34,7 +34,7 @@
 
         <!-- Logo desktop -->
         <a href="{{route('shop.index')}}" class="logo">
-          <img src="{{asset('modules/shop/images/logos/petit-butix.jpg')}}" class="rounded-circle" alt="sds">
+          <img src="{{asset('modules/shop/images/logos/petit-butix.jpg')}}" class="rounded-circle" alt="petit-logo">
         </a>
 
         <!-- Menu desktop -->
@@ -110,7 +110,9 @@
 <div class="wrap-header-mobile">
   <!-- Logo moblie -->
   <div class="logo-mobile">
-    <a href="{{route('shop.index')}}"><h3>PETITSTORE</a>
+    <a href="{{route('shop.index')}}">
+      <img src="{{asset('modules/shop/images/logos/petit-butix.jpg')}}" class="rounded-circle" alt="petit-logo">
+    </a>
   </div>
 
   <!-- Icon header -->
