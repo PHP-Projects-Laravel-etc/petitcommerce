@@ -11,7 +11,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
   Route::post('payment/create','CheckoutController@create')->name('payment.create');
   Route::post('payment/callback','CheckoutController@CheckoutRequest')->name('payment.callback');
   Route::get('result','CheckoutController@result')->name('payment.result');
-  Route::post('payment_door','CheckoutController@paymentDoor')->name('payment.paymentdoor');
+  Route::get('payment_door/{request}','CheckoutController@paymentDoor')->name('payment.paymentdoor');
 });
 
 Route::group(['middleware' => 'web', 'prefix' => 'api', 'namespace' => 'Modules\Cart\Http\Controllers'], function()
