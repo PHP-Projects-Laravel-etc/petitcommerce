@@ -3,13 +3,13 @@
     Hepsi
   </button>
 
-  <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$category = $categories->where('slug','erkek-t-shirt')->first()}}">
-    {{$category->name}}
+  <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$category = $categories->where('slug','erkek-t-shirt')->first()->name}}">
+    {{$category}}
   </button>
-  <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$category = $categories->where('slug','unisex-sweat-shirt')->first()}}">
-    {{$category->name}}
+  <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$category = $categories->where('slug','unisex-sweat-shirt')->first()->name}}">
+    {{$category}}
   </button>
-  <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$category = $categories->where('slug','kadın-pantolon')->first()}}">
-    {{$category->name}}
+  <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{$category = $categories->where('slug','kadın-pantolon')->first()->name}}">
+    {{$category}}
   </button>
 </div>
