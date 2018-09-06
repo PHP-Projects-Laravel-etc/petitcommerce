@@ -60,7 +60,8 @@ class CheckoutController extends Controller
       ));
 
       if($request->submit == "Kapıda Ödeme") {
-        return redirect()->route('payment.paymentdoor')->withRequest($request);
+        dd('ada');
+        return redirect()->route('payment.paymentdoor',$request);
       }
       $user = User::find(Auth::user()->id);
       $shopPay = new Payment();
