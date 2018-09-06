@@ -1,6 +1,13 @@
 @extends('shop::layouts.master')
 @section('title','PETIT MAĞAZA |')
 @section('content')
+<style media="screen">
+.product_block2
+{
+	width:200px;
+	height: 230px;
+}
+</style>
 	<body class="animsition">
 		<!-- Header -->
 		@include('shop::partials._shopping_header')
