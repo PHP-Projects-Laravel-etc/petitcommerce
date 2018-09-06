@@ -112,7 +112,7 @@
 				@if($product->images()->mainImage()->first())
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->name}}">
 						<!-- Block2 -->
-						<div class="block2 product_block2">
+						<div class="block2 product_block2 mt-3">
 							<div class="block2-pic hov-img0">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
 									<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">
