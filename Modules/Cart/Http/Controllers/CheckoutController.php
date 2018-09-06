@@ -14,115 +14,113 @@ use Cart;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index()
-    {
-      if(!Auth::user()){
-        return redirect()->back()->withError('Önce Kayıt olun veya giriş yapın');
-      }
-        $user = User::find(Auth::user()->id);
-        if(!$user->accounts) {
-          return redirect()->route('account.create')->withError("Adres Bilgilerinizin olması Gerekli");
-        }
-        return view('cart::checkout.index')->withUser($user);
+  /**
+  * Display a listing of the resource.
+  * @return Response
+  */
+  public function index()
+  {
+    if(!Auth::user()){
+      return redirect()->back()->withError('Önce Kayıt olun veya giriş yapın');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-
-    public function checkoutRequest(Request $request) {
-
-      $token = $request->token;
-      $request = new \Iyzipay\Request\RetrieveCheckoutFormRequest();
-      $request->setLocale(\Iyzipay\Model\Locale::TR);
-      $request->setToken($token);
-      $shoppingPay = new Payment;
-      $iyzico_options = $shoppingPay->options();
-      # make request
-      $checkoutForm = \Iyzipay\Model\CheckoutForm::retrieve($request, $iyzico_options);
-      # print result
-      $user = User::find(Auth::user()->id);
-      $a = $shoppingPay->getPayment($checkoutForm);
-      $status = $checkoutForm->getStatus();
-
-      return view('cart::checkout.result')->withStatus($status);
-
+    $user = User::find(Auth::user()->id);
+    if(!$user->accounts) {
+      return redirect()->route('account.create')->withError("Adres Bilgilerinizin olması Gerekli");
     }
-    public function create(Request $request)
-    {
-      $request->validate(array(
-      'payment_checkbox' => 'required',
-      ));
+    return view('cart::checkout.index')->withUser($user);
+  }
 
-      if($request->submit == "Kapıda Ödeme") {
-        return redirect()->route('payment.paymentdoor',$request);
-      }
-      $user = User::find(Auth::user()->id);
-      $shopPay = new Payment();
-       $a = $shopPay->iyizipay($request);
+  /**
+  * Show the form for creating a new resource.
+  * @return Response
+  */
+
+  public function checkoutRequest(Request $request) {
+
+    $token = $request->token;
+    $request = new \Iyzipay\Request\RetrieveCheckoutFormRequest();
+    $request->setLocale(\Iyzipay\Model\Locale::TR);
+    $request->setToken($token);
+    $shoppingPay = new Payment;
+    $iyzico_options = $shoppingPay->options();
+    # make request
+    $checkoutForm = \Iyzipay\Model\CheckoutForm::retrieve($request, $iyzico_options);
+    # print result
+    $user = User::find(Auth::user()->id);
+    $a = $shoppingPay->getPayment($checkoutForm);
+    $status = $checkoutForm->getStatus();
+
+    return view('cart::checkout.result')->withStatus($status);
+
+  }
+  public function create(Request $request)
+  {
+    $request->validate(array(
+    'payment_checkbox' => 'required',
+    ));
+
+
+    $user = User::find(Auth::user()->id);
+    $shopPay = new Payment();
+    if($request->submit == "Kapıda Ödeme") {
+      $shopPay = $payment->paymentDoor($request);
+      return view('cart::checkout.result');
+    }
+    else {
+      $a = $shopPay->iyizipay($request);
       $payment_form = '<div id="iyzipay-checkout-form" class="popup"></div>';
       return view('cart::checkout.payment')->withPaymentform($payment_form);
     }
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-    }
+  /**
+  * Store a newly created resource in storage.
+  * @param  Request $request
+  * @return Response
+  */
+  public function store(Request $request)
+  {
+  }
 
-    public function paymentDoor(Request $request) {
-      dd('ada');
-      $payment = new Payment;
-      $payment->paymentDoor($request);
-      return view('cart::checkout.result');
- }
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
+  /**
+  * Show the specified resource.
+  * @return Response
+  */
 
-     public function result()
-     {
-       return view('cart::checkout.result');
-     }
+  public function result()
+  {
+    return view('cart::checkout.result');
+  }
 
 
-    public function show()
-    {
-        return view('cart::show');
-    }
+  public function show()
+  {
+    return view('cart::show');
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('cart::edit');
-    }
+  /**
+  * Show the form for editing the specified resource.
+  * @return Response
+  */
+  public function edit()
+  {
+    return view('cart::edit');
+  }
 
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-    }
+  /**
+  * Update the specified resource in storage.
+  * @param  Request $request
+  * @return Response
+  */
+  public function update(Request $request)
+  {
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
-    {
-    }
+  /**
+  * Remove the specified resource from storage.
+  * @return Response
+  */
+  public function destroy()
+  {
+  }
 }
