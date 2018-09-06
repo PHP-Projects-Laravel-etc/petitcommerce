@@ -41,6 +41,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /* TL Simgesi */
 
 
+.product_block2
+{
+  width:200px;
+  height: 230px;
+}
 .category-name {
   display:none;
 }
@@ -241,6 +246,12 @@ ul.with-bullets ,li.with-bullets {
 .category-name {
   display:block !important;
 }
+.product_block2
+{
+  width:auto;
+  height: auto;
+}
+
 }
 
 
@@ -1106,6 +1117,10 @@ ul.with-bullets ,li.with-bullets {
 
 /*---------------------------------------------*/
 @media (max-width: 575px) {
+  .product_image_frontpage {
+    height : auto;
+  }
+
   .header-cart {
     padding: 30px;
   }
@@ -3318,7 +3333,7 @@ input.num-product::-webkit-inner-spin-button {
   .block2-txt-child1 {
     width: calc(100% - 30px);
     position: relative;
-    left: 12%;
+/* left: 12%; */
   }
 
 
@@ -3327,7 +3342,8 @@ input.num-product::-webkit-inner-spin-button {
 
 /*//////////////////////////////////////////////////////////////////
 [ SM ]*/
-@media (max-width: 575px) {
+
+
   .m-0-sm {margin: 0;}
   .m-lr-0-sm {margin-left: 0; margin-right: 0;}
   .m-lr-15-sm {margin-left: 15px; margin-right: 15px;}

@@ -3,12 +3,14 @@
 /*//////////////////////////////////////////////////////////////////
 [ REBOOT ]*/
 *, *:before, *:after {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+
 
 body, html {
 	font-family: Arial, sans-serif;
@@ -3695,7 +3697,10 @@ iframe {border: none;}
   .parallax100 {
     background-attachment: inherit;
   }
+
+
 }
+
 
 
 /*---------------------------------------------*/
