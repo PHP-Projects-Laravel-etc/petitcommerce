@@ -92,7 +92,7 @@
 				<div class="block2">
 					<div class="block2-pic hov-img0">
 						<a href="{{route('product.shop-detail',$product->slug)}}">
-							<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:200px; height:260px;" alt="{{$product->slug}}">
+							<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">
 						</a>
 					</div>
 
@@ -120,7 +120,7 @@
 				<div class="block2">
 					<div class="block2-pic hov-img0">
 						<a href="{{route('product.shop-detail',$product->slug)}}">
-							<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:200px; height:260px;" alt="{{$product->slug}}">
+							<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">
 						</a>
 					</div>
 
