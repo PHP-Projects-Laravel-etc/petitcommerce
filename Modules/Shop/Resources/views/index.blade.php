@@ -74,7 +74,7 @@
 			@foreach($butix_products as $product)
 				@if($product->images()->mainImage()->first())
 
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->name}}">
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
 
 						<div class="block2 product_block2 mt-5">
@@ -110,7 +110,7 @@
 		<div class="row isotope-grid mt-5">
 			@foreach($accessuar_products as $product)
 				@if($product->images()->mainImage()->first())
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->name}}">
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
 						<div class="block2 product_block2 mt-5">
 							<div class="block2-pic hov-img0">
@@ -138,7 +138,7 @@
 		<div class="row isotope-grid mt-5">
 			@foreach($bag_products as $product)
 				@if($product->images()->mainImage()->first())
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->name}}">
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
 						<div class="block2 product_block2 mt-5">
 							<div class="block2-pic hov-img0">
