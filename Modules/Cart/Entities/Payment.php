@@ -147,8 +147,9 @@ class Payment extends Model
         $product_sale->middleman_id = $middleman_id;
         $product_sale->sale_package = $sale_package;
         $product_sale->save();
-        $product->sizes()->where('size_id', $row->size['size_id'])
-        ->where('color_id',$row->color['color_id'])
+
+        $product->sizes()->where('size_id', $row->options->size['size_id'])
+        ->where('color_id',$row->options->color['color_id'])
         ->decrement('stock',$row->qty);
         $online_order = new OnlineOrder;
         $adress_id = Session::get('adress');
