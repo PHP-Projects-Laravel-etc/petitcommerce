@@ -60,7 +60,6 @@ class CheckoutController extends Controller
       ));
 
       if($request->submit == "Kapıda Ödeme") {
-        dd('ada');
         return redirect()->route('payment.paymentdoor',$request);
       }
       $user = User::find(Auth::user()->id);
@@ -80,6 +79,7 @@ class CheckoutController extends Controller
     }
 
     public function paymentDoor(Request $request) {
+      dd('ada');
       $payment = new Payment;
       $payment->paymentDoor($request);
       return view('cart::checkout.result');
