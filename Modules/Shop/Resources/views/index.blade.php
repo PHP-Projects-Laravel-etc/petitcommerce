@@ -7,6 +7,21 @@
 	width:200px;
 	height: 230px;
 }
+@media(max-width: 575px) {
+
+.product_block2
+{
+  width:auto;
+  height: auto;
+}
+@media (max-width: 767px) {
+
+  .block2-txt-child1 {
+    width: calc(100% - 30px);
+    position: relative;
+/* left: 12%; */
+  }
+
 </style>
 	<body class="animsition">
 		<!-- Header -->
