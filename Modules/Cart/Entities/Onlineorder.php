@@ -28,5 +28,21 @@ class Onlineorder extends Model
     ]);
 
   }
+  public function createDoorOrder($adress_id,$product_sale) {
+
+    $sarebu_orders = Onlineorder::insert([
+      'basketId' => 99999,
+      'product_sale_id' => $product_sale->id,
+      'sale_package_id' => $product_sale->sale_package,
+      'customer_id' => Auth::user()->id,
+      'adress_id' => $adress_id,
+      'status' => 9999,
+      'paid' => 0,
+      'log' => 9999,
+    ]);
+
+  }
+
+
 
 }

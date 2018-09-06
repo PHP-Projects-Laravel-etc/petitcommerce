@@ -1,5 +1,7 @@
 @extends('shop::layouts.master')
 @section('title','SEPET GÖRÜNTÜLEME |')
+@section('shop_styles')
+	{{ Html::style(mix('assets/common/css/parsley.css')) }}
 @section('content')
 	<body class="animsition">
 
@@ -9,7 +11,7 @@
 		<div class="row mt-5">
 			<div class="col-sm-10 col-md-8 col-lg-4 ml-5">
 				<div class="p-b-30 m-lr-15-sm">
-					{!! Form::open(['route'=>['payment.create'],'data-parsley-validate' => '','class' => 'w-full' ]) !!}
+					{!! Form::open(['route'=>['payment.create'],'data-parsley-validate' => '','id => myForm']) !!}
 					<h5 class="mtext-108 cl2 p-b-7">
 						{{__('views.shop.account_info_adress')}}
 					</h5>
@@ -31,23 +33,23 @@
 					<div class="row p-b-25 mt-3">
 						<div class="col-sm-6 p-b-5">
 							<label class="stext-102 cl3" for="name">İsim</label>
-							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" value="" readonly>
+							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" value="" readonly required>
 						</div>
 
 						<div class="col-sm-6 p-b-5">
 							<label class="stext-102 cl3" for="lastname">Soyisim</label>
-							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="lastname" type="text" name="lastname" value="" readonly>
+							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="lastname" type="text" name="lastname" value="" readonly required>
 						</div>
 
 						<div class="col-12 p-b-5">
 							<label class="stext-102 cl3" for="email">Email</label>
-							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email" value="{{Auth::user()->email}}" readonly>
+							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email" value="{{Auth::user()->email}}" readonly required>
 
 						</div>
 
 						<div class="col-12 p-b-5">
 							<label class="stext-102 cl3" for="city">Şehir</label>
-							<select class=" size-111 bor8 stext-102 cl2 p-lr-20" name="city" id="city" readonly>
+							<select class=" size-111 bor8 stext-102 cl2 p-lr-20" name="city" id="city" readonly required>
 								<option value="">Şehir Seçin</option>
 							</select>
 							<input class="size-111 bor8 stext-102 cl2 p-lr-20"  type="text" name="country" value="Türkiye" hidden>
@@ -55,21 +57,21 @@
 						</div>
 						<div class="col-12 p-b-5">
 							<label class="stext-102 cl3" for="adress">Adres</label>
-							<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="adress" name="adress" readonly></textarea>
+							<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="adress" name="adress" readonly required></textarea>
 						</div>
 
 						<div class="col-6 p-b-5">
 							<label class="stext-102 cl3" for="zip_code">Posta Kodu</label>
-							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="zip_code" type="text" name="zip_code" value="" readonly>
+							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="zip_code" type="text" name="zip_code" value="" readonly required>
 						</div>
 						<div class="col-6 p-b-5">
 							<label class="stext-102 cl3" for="phone">Telefon Numarası</label>
-							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="phone" type="text" name="phone" value="" readonly>
+							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="phone" type="text" name="phone" value="" readonly required>
 						</div>
 
 						<div class="col-6 p-b-5">
 							<label class="stext-102 cl3" for="id_number">TC Kimlik No</label>
-							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="id_number" type="text" name="id_number" value="" readonly>
+							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="id_number" type="text" name="id_number" value="" readonly required>
 						</div>
 					</div>
 				</div>
@@ -138,6 +140,7 @@
 									<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 										<p class="stext-111 cl6 p-t-2">
 											Ürünlerimiz MNG kargo ile Gönderilmektedir
+											Kapıda Ödeme - <span class="simge-tl">&#8378;</span>8 dahil değildir.
 
 										</div>
 									</div>
@@ -145,21 +148,45 @@
 									<div class="flex-w flex-t p-t-27 p-b-33">
 										<div class="size-208">
 											<span class="mtext-101 cl2">
-												{{__('views.shop.cart_total')}}
+												<p>	{{__('views.shop.cart_tax')}}</p>
+											</span>
+											<span class="mtext-101 cl2 mt-2">
+												<p  class="mt-2">	{{__('views.shop.cart_total')}}</p>
 											</span>
 										</div>
 
 										<div class="size-209 p-t-1">
 											<span class="mtext-110 cl2">
-												<span class="simge-tl">&#8378;</span> {{Cart::total()}}</br>
-												<span class="simge-tl">&#8378;</span> {{Cart::tax()}}
+											<span class="simge-tl">&#8378;</span><span class="tax">{{Cart::tax()}}</span></br>
+											<p class="mt-2"><span class="simge-tl">&#8378;</span><span class="total">{{Cart::total()}}</span></p>
 											</span>
+
 										</div>
 									</div>
+									<p>
+										@include('partials._messages')
+
+										<p><input type="checkbox" class="online-payment-contract" name="payment_checkbox" value="1" data-parsley-checkmin="1" id="checkbox" data-parsley-required="true" data-parsley-trigger="click">
+											 <a href="#ex1" data-toggle="modal"  class="cl10" rel="modal:open">Mesafeli Satış Sözleşmesi'ni Onaylıyorum</a></p>
 								</div>
 							</div>
+							<div class="modal fade form-spacing-top" style="padding-top:100px;" id="ex1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <h5 class="modal-title" id="exampleModalLabel"></h5>
+							      <div class="modal-body text-center">
+											@include('shop::partials._online_selling_contract')
+							        </div>
+							      </div>
+							    </div>
+							  </div>
 						</div>
-						{{Form::submit('Ödemeye Git',['class' => 'flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer']) }}
+
+						</p>
+						{{Form::submit('Ödemeye Git',['class' => 'flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer mt-3', 'name' =>'submit']) }}
+
+						{{Form::submit('Kapıda Ödeme',['class' => 'flex-c-m stext-101 cl0 size-116 bg5 bor14 hov-btn3 p-lr-15 trans-04 pointer mt-3' ,'name' =>'submit']) }}
+
 						{{Form::close() }}
 					</div>
 				</div>
@@ -167,7 +194,9 @@
 			</div>
 
 			<!-- Footer -->
+			<div class="mt-5">
 			@include('shop::partials._footer')
+		</div>
 
 			<!-- Back to top -->
 			<div class="btn-back-to-top" id="myBtn">
@@ -178,9 +207,29 @@
 		@endsection
 
 		@section('shop_scripts')
+
 			<!--===============================================================================================-->
 			<script src="{{asset('modules/shop/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 			<!--===============================================================================================-->
+			{{ Html::script(mix('assets/common/js/parsley.min.js')) }}
+			{{ Html::script(mix('assets/common/js/i18n/parsley-tr.js')) }}
+<script type="text/javascript">
+var name = $('#checkbox1').parsley();
+window.Parsley.on('field:error', function(evt) {
+	 console.log('field error:' + evt.$element.attr('name'));
+ })
+ window.Parsley.on('field:success', function(evt) {
+	 console.log('field success:' + evt.$element.attr('name'));
+ })
+ window.Parsley.on('field:validate', function(evt) {
+	 console.log('field validate:' + evt.$element.attr('name'))
+ })
+ window.Parsley.on('field:validated', function(evt) {
+	 console.log('field validated:' + evt.$element.attr('name'))
+ })
+
+</script>
+</script>
 			<script src="{{asset('modules/shop/vendor/animsition/js/animsition.min.js')}}"></script>
 			<!--===============================================================================================-->
 			<script src="{{asset('modules/shop/vendor/bootstrap/js/popper.js')}}"></script>
@@ -199,7 +248,9 @@
 			<script src="{{asset('modules/shop/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
 			<!--===============================================================================================-->
 			<script src="{{asset('modules/shop/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+
 			<script>
+
 				$('.js-pscroll').each(function(){
 					$(this).css('position','relative');
 					$(this).css('overflow','hidden');
@@ -213,7 +264,10 @@
 						ps.update();
 					})
 				});
+
+
 			</script>
+
 			@include('shop::partials._account_city_javascript')
 
 			<!--===============================================================================================-->

@@ -9,12 +9,12 @@
   <body>
     <div class="text-center" style="background-color:#717fe0; padding:5% 5%">
       <h2 style="color:white;">
-    BEHİCESGLM</h2>
+    PETITSTORE</h2>
     </div>
 
     <div class="container mt-5">
-      <p>Ödemeniz Başarı ile Alındı.</p>
-      <p><a href="{{route('shop.index')}}">https://behicesglm.com</a> </p>
+      <p>Siparişiniz Başarı ile Alındı.</p>
+      <p><a href="{{route('shop.index')}}">https://petitstore.web.tr</a> </p>
       <p>Sipariş Numaranız : {{$product_sale[0]->sale_package}}</p>
       <table class="table">
         <thead>

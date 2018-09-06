@@ -117,58 +117,77 @@ class Payment extends Model
   public function getPayment($checkoutForm) {
     switch ($checkoutForm->getStatus()) {
       case 'success':
-      $product_sale = new Productsale;
-      $last_package = $product_sale->orderBy('id','DESC')->first();
-      $sale_package = $product_sale->createSalePackageNumber($last_package);
-      $total_price = 0;
-      $customer_id = Auth::user()->id;
-      $middleman_id = 1;
-      $payment_id = 5;
-      $sale_array = array();
-
-      foreach(Cart::content() as $row) {
-        $product = Product::find($row->id);
-        $product_sale = new ProductSale;
-        $product_sale->product_id = $product->id;
-        $product_sale->product_human_id = $product->product_id;
-        $product_sale->product_name = $product->name;
-        $product_sale->sale_id = 5;
-        $product_sale->size_id =  $row->options->size['size_id'];
-        $product_sale->color_id = $row->options->color['color_id'];
-        $product_sale->sale_quantity = $row->qty;
-        $product_sale->category_id = $product->category_id;
-        $product_sale->sale_price = $row->price * $row->qty;
-        $product_sale->statu = 1;
-        $product_sale->campaign_id = null;
-        $product_sale->payment_id = 2;
-        $product_sale->created_at = Carbon::now();
-        $product_sale->seller_id = 1;
-        $product_sale->customer_id = $customer_id;
-        $product_sale->middleman_id = $middleman_id;
-        $product_sale->sale_package = $sale_package;
-        $product_sale->save();
-
-        $product->sizes()->where('size_id', $row->options->size['size_id'])
-        ->where('color_id',$row->options->color['color_id'])
-        ->decrement('stock',$row->qty);
-        $online_order = new OnlineOrder;
-        $adress_id = Session::get('adress');
-        $online_order->createOrder($checkoutForm,$adress_id,$product_sale);
-        Cart::destroy();
-      }
-      Mail::to(Auth::user())->send(new SendSaleSuccess($sale_package,$adress_id));
-      Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($sale_package,$adress_id));
-
-      Session::flash('success','Ödemeniz Alındı');
+      $this->onlineProductSale($checkoutForm);
       break;
       default:
       $online_order = new OnlineOrder;
       $adress_id = Session::get('adress');
-      $online_order->createOrder($checkoutForm,$adress_id,$product_sale->id);
+      $online_order->createOrder($checkoutForm,$adress_id,null);
       Session::flash('error','Ödeme alınamadı, Tekrar deneyin.');
       break;
     }
   }
+  public function onlineProductSale($checkoutForm){
+    foreach(Cart::content() as $row) {
+      $product_sale = $this->saveProductSale($row);
+      $online_order = new OnlineOrder;
+      $adress_id = Session::get('adress');
+      $online_order->createOrder($checkoutForm,$adress_id,$product_sale);
+      Cart::destroy();
+      Mail::to(Auth::user())->send(new SendSaleSuccess($product_sale->sale_package,$adress_id));
+      Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
 
-
+      Session::flash('success','Ödemeniz Alındı');
+    }
+  }
+  public function saveProductSale($row) {
+    $product_sale = new Productsale;
+    $last_package = $product_sale->orderBy('id','DESC')->first();
+    $sale_package = $product_sale->createSalePackageNumber($last_package);
+    $total_price = 0;
+    $customer_id = Auth::user()->id;
+    $middleman_id = 1;
+    $payment_id = 5;
+    $sale_array = array();
+    $product = Product::find($row->id);
+    $product_sale = new ProductSale;
+    $product_sale->product_id = $product->id;
+    $product_sale->product_human_id = $product->product_id;
+    $product_sale->product_name = $product->name;
+    $product_sale->sale_id = 5;
+    $product_sale->size_id =  $row->options->size['size_id'];
+    $product_sale->color_id = $row->options->color['color_id'];
+    $product_sale->sale_quantity = $row->qty;
+    $product_sale->category_id = $product->category_id;
+    $product_sale->sale_price = $row->price * $row->qty;
+    $product_sale->statu = 1;
+    $product_sale->campaign_id = null;
+    $product_sale->payment_id = 2;
+    $product_sale->created_at = Carbon::now();
+    $product_sale->seller_id = 1;
+    $product_sale->customer_id = $customer_id;
+    $product_sale->middleman_id = $middleman_id;
+    $product_sale->sale_package = $sale_package;
+    $product_sale->save();
+    $this->decrementProductQuantity($product,$row);
+    return $product_sale;
+  }
+  public function decrementProductQuantity($product,$row){
+    $product->sizes()->where('size_id', $row->options->size['size_id'])
+    ->where('color_id',$row->options->color['color_id'])
+    ->decrement('stock',$row->qty);
+  }
+  public function paymentDoor($request) {
+    $adress_id = $request->adress_id;
+  foreach(Cart::content() as $row) {
+    $product_sale = $this->saveProductSale($row);
+    $online_order = new OnlineOrder;
+    $online_order->createDoorOrder($adress_id,$product_sale);
+    }
+    Cart::destroy();
+    
+    Mail::to(Auth::user())->send(new SendSaleSuccess($product_sale->sale_package,$adress_id));
+    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
+    Session::flash('success','Ödemeniz Alındı');
+}
 }

@@ -93,4 +93,33 @@ class ShopController extends Controller
     {
       return view('shop::contact');
     }
+    public function privacy()
+    {
+      return view('shop::policies.privacy_policy');
+    }
+    public function cancelReturn()
+    {
+      return view('shop::policies.cancel_return');
+    }
+
+    public function terms()
+    {
+      return view('shop::policies.terms_of_use');
+    }
+
+    public function onlineSellingContract()
+    {
+      return view('shop::policies.online_selling_contract');
+    }
+
+    public function paymentShipment()
+    {
+      return view('shop::policies.payment_shipment_policy');
+    }
+
+    public function lawsuit()
+    {
+      return view('shop::policies.lawsuit');
+    }
+
 }

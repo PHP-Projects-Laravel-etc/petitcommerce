@@ -111,7 +111,7 @@
 
 						<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 							<p class="mtext-110 cl6 p-t-2">
-								Kapıda Ödeme - <span class="simge-tl">&#8378;</span>8
+								Kapıda Ödeme - <span class="simge-tl">&#8378;</span>8 dahil değildir.
 							</p>
 							{{--
 							<div class="p-t-15">
@@ -149,18 +149,18 @@
 
 <div class="flex-w flex-t p-t-27 p-b-33">
 	<div class="size-208">
-		<span class="mtext-101 cl2">
-		<p>	{{__('views.shop.cart_total')}}</p>
-		</span>
+	{{--	<span class="mtext-101 cl2">
+			<p>	{{__('views.shop.cart_tax')}}</p>
+		</span>--}}
 		<span class="mtext-101 cl2 mt-2">
-		<p class="mt-2 ">	{{__('views.shop.cart_tax')}}</p>
+			<p  class="mt-2">	{{__('views.shop.cart_total')}}</p>
 		</span>
 	</div>
 
 	<div class="size-209 p-t-1">
 		<span class="mtext-110 cl2">
-			<span class="simge-tl">&#8378;</span><span class="total">{{Cart::total()}}</span></br>
-		<p class="mt-2"><span class="simge-tl">&#8378;</span><span class="tax">{{Cart::tax()}}</span></p>
+{{--		<span class="simge-tl">&#8378;</span><span class="tax">{{Cart::tax()}}</span></br>--}}
+		<p class="mt-2"><span class="simge-tl">&#8378;</span><span class="total">{{Cart::total()}}</span></p>
 		</span>
 	</div>
 </div>

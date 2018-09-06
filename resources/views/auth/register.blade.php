@@ -157,7 +157,6 @@
     console.log('field validated:' + evt.$element.attr('name'))
   })
 
-});
 </script>
 @section('styles')
   @parent

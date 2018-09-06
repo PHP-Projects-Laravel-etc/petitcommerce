@@ -44,7 +44,7 @@
 							</span>
 
 							<p class="stext-115 cl6 size-213 p-t-18">
-								Beşiktaş Sinanpaşa Pasajı No : 4 Beşiktaş / İstanbul
+								Tomtom Mahallesi İstiklal Caddesi Beyoğlu İş Merkezi No : 187 / 58 BEYOĞLU / İSTANBUL
 							</p>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								0850 444 77 88
+								+90 532 640 56 18
 							</p>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								iletişim@behicesglm.com
+								ugur.muslim@gmail.com
 							</p>
 						</div>
 					</div>

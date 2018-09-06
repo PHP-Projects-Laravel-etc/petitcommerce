@@ -55,7 +55,13 @@ class CheckoutController extends Controller
     }
     public function create(Request $request)
     {
+      $request->validate(array(
+      'payment_checkbox' => 'required',
+      ));
 
+      if($request->submit == "Kapıda Ödeme") {
+        return redirect()->route('payment.paymentdoor',$request);
+      }
       $user = User::find(Auth::user()->id);
       $shopPay = new Payment();
        $a = $shopPay->iyizipay($request);
@@ -72,6 +78,11 @@ class CheckoutController extends Controller
     {
     }
 
+    public function paymentDoor(Request $request) {
+      $payment = new Payment;
+      $payment->paymentDoor($request);
+      return view('cart::checkout.result');
+ }
     /**
      * Show the specified resource.
      * @return Response
