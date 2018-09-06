@@ -63,7 +63,7 @@ class CheckoutController extends Controller
     $user = User::find(Auth::user()->id);
     $shopPay = new Payment();
     if($request->submit == "Kapıda Ödeme") {
-      $shopPay = $payment->paymentDoor($request);
+      $shopPay->paymentDoor($request);
       return view('cart::checkout.result');
     }
     else {
