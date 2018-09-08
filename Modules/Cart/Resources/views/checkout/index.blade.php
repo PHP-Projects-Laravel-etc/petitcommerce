@@ -11,7 +11,7 @@
 		<div class="row mt-5">
 			<div class="col-sm-10 col-md-8 col-lg-4 ml-5">
 				<div class="p-b-30 m-lr-15-sm">
-					{!! Form::open(['route'=>['payment.create'],'data-parsley-validate' => '','id => myForm']) !!}
+					{!! Form::open(['route'=>['payment.create'],'data-parsley-validate' => '']) !!}
 					<h5 class="mtext-108 cl2 p-b-7">
 						{{__('views.shop.account_info_adress')}}
 					</h5>
