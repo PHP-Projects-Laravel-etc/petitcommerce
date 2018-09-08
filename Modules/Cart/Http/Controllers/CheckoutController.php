@@ -21,7 +21,7 @@ class CheckoutController extends Controller
   public function index()
   {
     if(!Auth::user()){
-      return redirect()->back()->withError('Önce Kayıt olun veya giriş yapın');
+      return redirect()->route('login')->withError('Önce Kayıt olun veya giriş yapın');
     }
     $user = User::find(Auth::user()->id);
     if(!$user->accounts) {

@@ -49,18 +49,19 @@
                         <div class="separator">
                             <span>{{ __('views.auth.login.message_0') }}</span>
                             <div>
-                                <a href="{{ route('social.redirect', ['google']) }}" class="btn btn-success btn-google-plus">
+                              <a href="{{ route('social.redirect', ['facebook']) }}" class="btn btn-success btn-facebook">
+                                  <i class="fa fa-facebook"></i>
+                                  Facebook
+                              </a>
+
+                              {{--  <a href="{{ route('social.redirect', ['google']) }}" class="btn btn-success btn-google-plus">
                                     <i class="fa fa-google-plus"></i>
                                     Google+
                                 </a>
-                                <a href="{{ route('social.redirect', ['facebook']) }}" class="btn btn-success btn-facebook">
-                                    <i class="fa fa-facebook"></i>
-                                    Facebook
-                                </a>
-                                <a href="{{ route('social.redirect', ['twitter']) }}" class="btn btn-success btn-twitter">
+                                                              <a href="{{ route('social.redirect', ['twitter']) }}" class="btn btn-success btn-twitter">
                                     <i class="fa fa-twitter"></i>
                                     Twitter
-                                </a>
+                                </a>--}}
                             </div>
                         </div>
 
