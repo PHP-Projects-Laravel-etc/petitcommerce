@@ -83,7 +83,6 @@ class SocialLoginController extends Controller
      */
     public function login($provider)
     {
-      dd($provider);
         $socialite = Socialite::driver($provider);
 
         $socialUser = $socialite->user();
