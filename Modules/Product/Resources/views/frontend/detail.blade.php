@@ -628,8 +628,9 @@
 				success: function(attributes) {
 					$.each(attributes,function(i,attribute) {
 						if(attribute.pivot.stock > 0) {
-							$attr_option = '<option value=' + attribute.id + '-' + attribute.attribute_long+'>' + attribute.attribute_long + ' </option>'
+							$attr_option = '<option value="' + attribute.id + '-' + attribute.attribute_long +'">' + attribute.attribute_long + ' </option>'
 							$select.append($attr_option);
+							console.log($attr_option);
 						}
 					});
 				}

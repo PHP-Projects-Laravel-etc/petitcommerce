@@ -40,24 +40,21 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ FONT ]*/
 /* TL Simgesi */
 
-.online-payment-contract
-{
-  display : inline !important;
-}
-.product_block2
-{
-  width:200px;
-  height: 230px;
-}
 .category-name {
   display:none;
 }
 
+.online-payment-contract {
+  display : inline !important;
+  }
+.product_block2 {
+  width:200px;
+  height: 230px;
+}
 
 .product-detail-photos {
   width: 510px;
   height: 630px;
-
 }
 
 ul.with-bullets ,li.with-bullets {

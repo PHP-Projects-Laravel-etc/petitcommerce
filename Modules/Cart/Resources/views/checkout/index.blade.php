@@ -90,6 +90,7 @@
 							</div>
 							<div class="col-md-4">
 								<ul>
+									{{dd($row->options->color['color_name']) }}
 									<li>İsim : {{$product->name}}</li>
 									<li>Fiyat : <span class="simge-tl">&#8378;</span> {{$product->price}} </li>
 									<li>Beden : {{$row->options->size['size_name']}} </li>
