@@ -18,6 +18,7 @@
 					<p class="stext-102 cl6">
 						Adres Bilgileriniz ürünleri göndermemiz için gereklidir.
 					</p>
+					<div class="row p-b-25 mt-3">
 					<div class="col-12 p-b-5">
 						<label class="stext-102 cl3" for="city">Adres İsmi</label>
 						<select class=" size-111 bor8 stext-102 cl2 p-lr-20" name="adress_id" id="account_name">
@@ -30,13 +31,12 @@
 					</div>
 
 
-					<div class="row p-b-25 mt-3">
-						<div class="col-sm-6 p-b-5">
+						<div class="col-sm-6 p-b-5 mt-3">
 							<label class="stext-102 cl3" for="name">İsim</label>
 							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name" value="" readonly required>
 						</div>
 
-						<div class="col-sm-6 p-b-5">
+						<div class="col-sm-6 p-b-5 mt-3">
 							<label class="stext-102 cl3" for="lastname">Soyisim</label>
 							<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="lastname" type="text" name="lastname" value="" readonly required>
 						</div>
@@ -90,7 +90,6 @@
 							</div>
 							<div class="col-md-4">
 								<ul>
-									{{dd($row->options->color['color_name']) }}
 									<li>İsim : {{$product->name}}</li>
 									<li>Fiyat : <span class="simge-tl">&#8378;</span> {{$product->price}} </li>
 									<li>Beden : {{$row->options->size['size_name']}} </li>

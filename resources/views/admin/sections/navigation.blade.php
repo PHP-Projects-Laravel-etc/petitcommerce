@@ -65,6 +65,11 @@
                   {{ __('views.backend.section.navigation.products_index') }}
                 </a>
               </li>
+              <li>
+                <a href="{{ route('instagram.reportset') }}">
+                  {{ __('views.backend.section.navigation.instagram_report') }}
+                </a>
+              </li>
 
 
 
@@ -144,6 +149,11 @@
               <li>
                 <a href="{{ route('stocks.reportset') }}">
                   {{ __('views.backend.section.navigation.menu_stocks_report') }}
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('instagram.reportset') }}">
+                  {{ __('views.backend.section.navigation.instagram_report') }}
                 </a>
               </li>
 

@@ -36,7 +36,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "5.5.*",
         "milon/barcode": "^5.3",
-        "nwidart/laravel-modules": "^3.3"
+        "nwidart/laravel-modules": "^3.3",
+        "raiym/instagram-php-scraper": "^0.8.24"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -104,6 +104,7 @@
   "views.backend.section.navigation.menu_attributes": "Özellikler",
   "views.backend.section.navigation.menu_attributes_report": "Rapor",
   "views.backend.section.navigation.menu_attributes_create" : "Yarat",
+  "views.backend.section.navigation.instagram_report": "Instagram Rapor",
   "**************************** Backend Header *******************": "Backend Header i18n",
   "views.backend.section.header.menu_0": "Log out",
   "**************************** Backend Footer *******************": "Backend Footer i18n",
@@ -206,6 +207,7 @@
   "views.admin.attribute.report" : "Özellik Rapor",
   "views.admin.product.create.title": "Ürün Yaratma",
   "views.admin.stockentry.report_title": "Stok Giriş Rapor",
+  "views.admin.product.report_instagram" : "Instagram Rapor",
   "**************************** Shop **********************": "Shop",
 
   "views.shop.instagram_products" : "ınstagram YENİLER",
@@ -230,6 +232,7 @@
   "views.shop.shop_related_products" : "Benzer Ürünler",
   "views.shop.shop_choose_size" : "Beden Seçin",
   "views.shop.shop_choose_color" : "Renk Seçin",
+  "views.shop.shop_choose_category": "Kategori Seçin",
   "views.shop.shop_your_cart" : "SEPETİNİZ",
   "views.shop.shop_go_to_cart" : "SEPETE GİT",
   "views.shop.shop_color" : "Renk",

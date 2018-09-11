@@ -40,7 +40,6 @@ class CartController extends Controller
     $color = explode('-',$request->color);
     $color_id = $color[0];
     $color_name = $color[1];
-    dd($size);
     Cart::add($request->product_id,$request->product_name,$request->quantity,$request->product_price,
     ['size'=>['size_id'=>$size_id,'size_name'=>$size_name],
     'color'=>['color_id'=>$color_id,'color_name'=>$color_name]])

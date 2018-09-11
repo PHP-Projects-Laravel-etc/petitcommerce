@@ -1,0 +1,16 @@
+{
+    "name": "Instagram",
+    "alias": "instagram",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Instagram\\Providers\\InstagramServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
