@@ -41,7 +41,6 @@ class InstagramController extends Controller
   * @return Response
   */
   public function store(Request $request){
-    {
       foreach($request->product_name as $product_name ) {
         $product = new Product;
         if ($product->productNameValidation($product_name)) {
@@ -93,16 +92,11 @@ class InstagramController extends Controller
           'updated_at' => Carbon::now(),
           ]);
         }
-
-
-
-
-        /*      foreach($attributes as $size_id=>$attr) {
-        foreach($attr as $color_id=>$quan){
-        */
       }
+      $request->session()
+      ->flash('success',"Ürünler Yaratıldı");
+      return redirect()->back();
     }
-  }
 
   /**
   * Show the specified resource.
@@ -162,11 +156,11 @@ class InstagramController extends Controller
         $price = null ;
         $product_long = explode('|',$media['caption'],2);
         if(count($product_long) > 1) {
-        $product_detail = explode(',',$product_long[0],2);
-        if(count($product_detail) > 1) {
-        $name = $product_detail[0];
-        $price = str_replace(array(' ',','), array('','.'),strtok($product_detail[1],'₺'));
-      }
+          $product_detail = explode(',',$product_long[0],2);
+          if(count($product_detail) > 1) {
+            $name = $product_detail[0];
+            $price = str_replace(array(' ',','), array('','.'),strtok($product_detail[1],'₺'));
+          }
         }
         $id = $media['id'];
         $url = $media['imageHighResolutionUrl'];
