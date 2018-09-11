@@ -241,10 +241,9 @@ public function productSearchAdmin(Request $request){
   {
     foreach ($products as $product) {
       foreach($product->sizes as $size) {
-        $a_href = '<a href = "{{route(\'product.show\',' .$product->product->slug .' )}}"';
         $output.='<tr>'.
-          '<th><a href = "{{route(\'product.show\',' .$product->product->slug .' )}}">'.$product->product_id .'</a></th>'.
-          '<td>'. $product->name .'</td>'.
+          '<th><a href="{{route(\'products.show\',' .$product->slug . ')}}">'.$product->product_id .'</a></th>'.
+          '<td><a href="{{route(\'products.show\',' .$product->slug . ')}}">'. $product->name .'</td>'.
           '<td>'. $product->product_id.$size->id .'</td>'.
           '<td>'. $size->attribute_long .'</td>'.
           '<td>'. $product->colors()->where('color_id',$size->pivot->color_id)->first()->attribute_long. '</td>'.
