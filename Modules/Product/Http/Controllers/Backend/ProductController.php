@@ -104,6 +104,7 @@ class ProductController extends Controller
 */
 public function show($slug)
 {
+
   $product = Product::where('slug',$slug)->first();
   $product_latest_quantity = null;
   if($product_latest_entry = DB::table('stock_entry')->where('product_id',$product->id)->orderBy('created_at','desc')->get()->groupBy('created_at')->first()) {
@@ -241,9 +242,11 @@ public function productSearchAdmin(Request $request){
   {
     foreach ($products as $product) {
       foreach($product->sizes as $size) {
+        $a_href = route('products.show',$product->slug);
+
         $output.='<tr>'.
-          '<th><a href="{{route(\'products.show\',' .$product->slug . ')}}">'.$product->product_id .'</a></th>'.
-          '<td><a href="{{route(\'products.show\',' .$product->slug . ')}}">'. $product->name .'</td>'.
+          '<th><a href="'. $a_href .'">'.$product->product_id .'</a></th>'.
+          '<td><a href="'. $a_href .'">'. $product->name .'</td>'.
           '<td>'. $product->product_id.$size->id .'</td>'.
           '<td>'. $size->attribute_long .'</td>'.
           '<td>'. $product->colors()->where('color_id',$size->pivot->color_id)->first()->attribute_long. '</td>'.
@@ -254,7 +257,6 @@ public function productSearchAdmin(Request $request){
           '</tr>';
         }
       }
-
       return Response($output);
     }
   }
