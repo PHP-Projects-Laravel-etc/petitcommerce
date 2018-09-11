@@ -241,8 +241,9 @@ public function productSearchAdmin(Request $request){
   {
     foreach ($products as $product) {
       foreach($product->sizes as $size) {
+        $a_href = '<a href = "{{route(\'product.show\',' .$product->product->slug .' )}}"';
         $output.='<tr>'.
-          '<th>'.$product->product_id .'</th>'.
+          '<th><a href = "{{route(\'product.show\',' .$product->product->slug .' )}}">'.$product->product_id .'</a></th>'.
           '<td>'. $product->name .'</td>'.
           '<td>'. $product->product_id.$size->id .'</td>'.
           '<td>'. $size->attribute_long .'</td>'.
