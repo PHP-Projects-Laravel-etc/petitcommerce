@@ -13,6 +13,7 @@
         <table class="table" id="table">
           <thead>
             <tr>
+              <th>Fotoğraf</th>
               <th>Kod</th>
               <th>İsim</th>
               <th>Barkod No</th>
@@ -33,6 +34,11 @@
             @foreach($products as $product)
               @foreach($product->sizes as $size)
                 <tr>
+                  @if($product->images()->mainImage()->first())
+                  <th><img src="{{asset('images/products/' . $product->images()->mainImage()->name)}}" style="width:30px; height:30px;" alt="">  </th>
+                @else
+                  <th>Yok</th>
+                @endif
                   <th><a href="{{route('products.show',$product->slug)}}">{{ $product->product_id }}</a></th>
                   <td><a href="{{route('products.show',$product->slug)}}">{{ $product->name }}</a></td>
                   <td>{{ $product->product_id.$size->id }}</td>

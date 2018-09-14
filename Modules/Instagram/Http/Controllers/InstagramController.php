@@ -95,7 +95,7 @@ class InstagramController extends Controller
       }
       $request->session()
       ->flash('success',"Ürünler Yaratıldı");
-      return redirect()->back();
+      return redirect()->route('instagram.reportset');
     }
 
   /**
@@ -144,7 +144,7 @@ class InstagramController extends Controller
     $date_last = $request->datelast;
     $time_set = $time->setReportTime($request);
     $instagram = new \InstagramScraper\Instagram();
-    $medias = $instagram->getMedias("petitbutix",25);
+    $medias = $instagram->getMedias($request->instagram_company,25);
     $i = 0;
     $product_details = array();
     $attributes = Attribute::all();

@@ -37,8 +37,8 @@
                     <option class="cat" value='{{ $category->id }}' @if(old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>
                     @endforeach
                   </select></th>
-                  <th><input style="width:80%;"type="number" class="main_sale_price" name="sale_price[{{$i}}]" id="product_price" value="{{$product_detail['price']}}"></th>
-                  <th><input style="width:80%;"type="number" class="main_entry_price" name="entry_price[{{$i}}]" id="product_entry_price" value=""></th>
+                  <th><input style="width:80%;"type="number" class="main_sale_price" step="any" name="sale_price[{{$i}}]" id="product_price" value="{{$product_detail['price']}}"></th>
+                  <th><input style="width:80%;"type="number" class="main_entry_price" step="any" name="entry_price[{{$i}}]" id="product_entry_price" value=""></th>
                   <th>
                     <select style="width:100%;" class="form-control select2 size_options"  name="size_id">
                       <option  disabled selected value>{{__('views.shop.shop_choose_size')}}</option>
@@ -121,7 +121,7 @@
             var $stock_attr = {product_name : $product_name,entry_price : $product_entry_price,product_price : $product_price,size_val : $size_val,color_val : $color_val,};
             var input =  '<tr class="table_row" id=' + $product_id + '-' + $i + '>' +
               '<td><button type="button" class="close" style = "font-size:30px;" aria-label="Close"><span aria-hidden="true">&times;</span></button></td>' +
-              '<td class="product_size"><input type="text" name="product_name['+$i+']" value ="'+  $product_name +'" readonly hidden></td>' +
+              '<td class="product_size"><input type="text" name="product_name['+$product_name+']" value ="'+  $product_name +'" readonly hidden></td>' +
               '<td class="product_size"><input type="text" name="product_category['+$product_name+']" value ="'+  $category_html +'" readonly></td>' +
               '<td class="product_size"><input type="text" name="product_price['+$product_name+']" value ="'+  $product_price +'" readonly></td>' +
               '<td class="product_size"><input type="text" name="product_entry_price['+$product_name+']" value ="'+  $product_entry_price +'" readonly></td>' +

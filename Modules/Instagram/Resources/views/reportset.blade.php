@@ -1,4 +1,6 @@
 @extends('admin.layouts.admin')
+@section('styles')
+  {{ Html::style(mix('assets/common/css/select2.min.css')) }}
 @section('title', __('views.admin.product.report_instagram'))
 @section('content')
 
@@ -21,6 +23,14 @@
         {!!Form::date('datefirst', \Carbon\Carbon::now(),['class'=>'manual ml-3', 'disabled']) !!}
         {!!Form::date('datelast', \Carbon\Carbon::now(),['class'=>'manual ml-3','disabled']) !!}
       </div>
+      <div class="form-spacing-top">
+
+        <select class="select2 instagram_companies" name="instagram_company">
+        <option value="petitbutix">Petitbutix</option>
+        <option value="petitbags">PetitBags</option>
+        <option value="petitaksesuar">PetitAksesuar</option>
+      </select>
+    </div>
 
       {{Form::submit('Instagram Raporu',['class' => 'btn btn-success  form-spacing-top']) }}
       {{Form::close() }}
@@ -28,8 +38,10 @@
   </div>
 @endsection
 @section('admin_scripts')
+  {{ Html::script(mix('assets/common/js/select2.min.js')) }}
   <script type="text/javascript">
   $(function(){
+    $('.select2').select2();
     var $manual = $('.manual');
     $('#formanual').on('click',function(){
       if($manual.attr('disabled')) {
