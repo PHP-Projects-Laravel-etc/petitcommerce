@@ -159,7 +159,6 @@ $currency = "TL";
 
 ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
 $hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket .$no_installment .$max_installment .$currency .$test_mode;
-dd($hash_str);
 $paytr_token=base64_encode(hash_hmac('sha256',$hash_str.$merchant_salt,$merchant_key,true));
 $post_vals=array(
 'merchant_id'=>$merchant_id,
