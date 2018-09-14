@@ -7,3 +7,8 @@
 <script>iFrameResize({},'#paytriframe');</script>
 
 @endsection
+
+  @section('scripts')
+
+
+  @endsection

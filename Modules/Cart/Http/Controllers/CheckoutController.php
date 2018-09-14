@@ -158,7 +158,8 @@ $max_installment = 0;
 $currency = "TL";
 
 ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
-$hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket.$no_installment.$max_installment.$currency.$test_mode;
+$hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket .$no_installment .$max_installment .$currency .$test_mode;
+dd($hash_str);
 $paytr_token=base64_encode(hash_hmac('sha256',$hash_str.$merchant_salt,$merchant_key,true));
 $post_vals=array(
 'merchant_id'=>$merchant_id,
@@ -180,7 +181,6 @@ $post_vals=array(
 'currency'=>$currency,
 'test_mode'=>$test_mode
 );
-
 $ch=curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://www.paytr.com/odeme/api/get-token");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -200,7 +200,7 @@ $result=json_decode($result,1);
 
 if($result['status']=='success') {
   $token=$result['token'];
-  return view('cart::checkout.payment')->withToken($token);
+  return view('cart::checkout.payment')->with('token',$token);
 }
 else {
   die("PAYTR IFRAME failed. reason:".$result['reason']);
