@@ -38,6 +38,7 @@ class CheckoutController extends Controller
 
   public function checkoutRequest(Request $request) {
     $post = $request;
+    Cart::destroy();
 
     ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
     #
