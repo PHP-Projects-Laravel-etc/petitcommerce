@@ -126,7 +126,7 @@ array("Örnek ürün 3", "45.42", 1)  // 3. ürün (Ürün Ad - Birim Fiyat - Ad
 )));
 */
 ############################################################################################
-
+dd($_SERVER);
 ## Kullanıcının IP adresi
 if( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
   $ip = $_SERVER["HTTP_CLIENT_IP"];
