@@ -64,7 +64,7 @@ $merchant_key 	= 'ng6rd4NDRtEnPiWj';
 $merchant_salt	= 'cRJ3xzTbCG85fWo9';
 #
 $online_order = new Onlineorder;
-$basketId = 1;
+$basketId = 2;
 if(count($online_order->get())) {
   $basketId = $online_order->nextBasketId();
 }
