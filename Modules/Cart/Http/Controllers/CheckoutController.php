@@ -37,21 +37,7 @@ class CheckoutController extends Controller
   */
 
   public function checkoutRequest(Request $request) {
-
-    $token = $request->token;
-    $request = new \Iyzipay\Request\RetrieveCheckoutFormRequest();
-    $request->setLocale(\Iyzipay\Model\Locale::TR);
-    $request->setToken($token);
-    $shoppingPay = new Payment;
-    $iyzico_options = $shoppingPay->options();
-    # make request
-    $checkoutForm = \Iyzipay\Model\CheckoutForm::retrieve($request, $iyzico_options);
-    # print result
-    $user = User::find(Auth::user()->id);
-    $a = $shoppingPay->getPayment($checkoutForm);
-    $status = $checkoutForm->getStatus();
-
-    return view('cart::checkout.result')->withStatus($status);
+    dd('eadas');
 
   }
   public function create(Request $request)
