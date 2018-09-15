@@ -76,8 +76,7 @@ $email = $request->email;
 $payment_amount	= Cart::total() * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
 #
 ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
-$merchant_oid = $basketId;
-dd($merchant_oid);
+$merchant_oid = "100001";
 #
 ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
 $user_name = $request->name . $request->last_name;
