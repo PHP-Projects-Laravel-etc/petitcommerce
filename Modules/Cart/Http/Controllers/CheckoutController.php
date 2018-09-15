@@ -70,6 +70,9 @@ class CheckoutController extends Controller
      */
 
     if( $post['status'] == 'success' ) { ## Ödeme Onaylandı
+      dd('sdsa');
+      $payment = new Payment;
+      $payment->onlineProductSale($checkoutForm);
 
       ## BURADA YAPILMASI GEREKENLER
       ## 1) Siparişi onaylayın.
@@ -128,7 +131,7 @@ $email = $request->email;
 $payment_amount	= Cart::total() * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
 #
 ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
-$merchant_oid = "100002";
+$merchant_oid = "100003";
 #
 ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
 $user_name = $request->name . $request->last_name;
