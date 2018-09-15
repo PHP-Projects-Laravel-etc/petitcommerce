@@ -104,12 +104,12 @@ $user_phone = $request->phone;
 ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
 ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
 ## !!! Siparişi onaylayacağız sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-$merchant_ok_url = "cart::checkout.result";
+$merchant_ok_url = "http://www.siteninadi.com/siparis-basarisiz";
 #
 ## Ödeme sürecinde beklenmedik bir hata oluşması durumunda müşterinizin yönlendirileceği sayfa
 ## !!! Bu sayfa siparişi iptal edeceğiniz sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
 ## !!! Siparişi iptal edeceğiniz sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-$merchant_fail_url = "cart::checkout.result";
+$merchant_fail_url = "http://www.siteninadi.com/siparis-basarili";
 #
 ## Müşterinin sepet/sipariş içeriği
 $basket = [];
@@ -139,6 +139,7 @@ if( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
 ## !!! Eğer bu örnek kodu sunucuda değil local makinanızda çalıştırıyorsanız
 ## buraya dış ip adresinizi (https://www.whatismyip.com/) yazmalısınız. Aksi halde geçersiz paytr_token hatası alırsınız.
 $user_ip=$ip;
+dd($user_ip);
 ##
 ## İşlem zaman aşımı süresi - dakika cinsinden
 $timeout_limit = "30";
@@ -158,28 +159,30 @@ $max_installment = 0;
 $currency = "TL";
 
 ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
-$hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket .$no_installment .$max_installment .$currency .$test_mode;
+$hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket.$no_installment.$max_installment.$currency.$test_mode;
 $paytr_token=base64_encode(hash_hmac('sha256',$hash_str.$merchant_salt,$merchant_key,true));
 $post_vals=array(
-'merchant_id'=>$merchant_id,
-'user_ip'=>$user_ip,
-'merchant_oid'=>$merchant_oid,
-'email'=>$email,
-'payment_amount'=>$payment_amount,
-'paytr_token'=>$paytr_token,
-'user_basket'=>$user_basket,
-'debug_on'=>$debug_on,
-'no_installment'=>$no_installment,
-'max_installment'=>$max_installment,
-'user_name'=>$user_name,
-'user_address'=>$user_address,
-'user_phone'=>$user_phone,
-'merchant_ok_url'=>$merchant_ok_url,
-'merchant_fail_url'=>$merchant_fail_url,
-'timeout_limit'=>$timeout_limit,
-'currency'=>$currency,
-'test_mode'=>$test_mode
-);
+    'merchant_id'=>$merchant_id,
+    'user_ip'=>$user_ip,
+    'merchant_oid'=>$merchant_oid,
+    'email'=>$email,
+    'payment_amount'=>$payment_amount,
+    'user_basket'=>$user_basket,
+    'paytr_token'=>$paytr_token,
+    'debug_on'=>$debug_on,
+    'no_installment'=>$no_installment,
+    'max_installment'=>$max_installment,
+    'user_name'=>$user_name,
+    'user_address'=>$user_address,
+    'user_phone'=>$user_phone,
+    'merchant_ok_url'=>$merchant_ok_url,
+    'merchant_fail_url'=>$merchant_fail_url,
+    'timeout_limit'=>$timeout_limit,
+    'currency'=>$currency,
+    'test_mode'=>$test_mode
+  );
+
+
 $ch=curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://www.paytr.com/odeme/api/get-token");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -191,7 +194,7 @@ curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
 curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 $result = @curl_exec($ch);
 if(curl_errno($ch))
-die("PAYTR IFRAME connection error. err:".curl_error($ch));
+  die("PAYTR IFRAME connection error. err:".curl_error($ch));
 
 curl_close($ch);
 
