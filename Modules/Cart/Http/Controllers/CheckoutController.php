@@ -140,7 +140,6 @@ if( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
 ## !!! Eğer bu örnek kodu sunucuda değil local makinanızda çalıştırıyorsanız
 ## buraya dış ip adresinizi (https://www.whatismyip.com/) yazmalısınız. Aksi halde geçersiz paytr_token hatası alırsınız.
 $user_ip=$ip;
-dd($user_ip);
 ##
 ## İşlem zaman aşımı süresi - dakika cinsinden
 $timeout_limit = "30";
