@@ -88,7 +88,7 @@ class CheckoutController extends Controller
     }
 
     ## Bildirimin alındığını PayTR sistemine bildir.
-    echo "OK";
+    echo "OK1";
     exit;
 
   }
