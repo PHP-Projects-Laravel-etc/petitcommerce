@@ -9,7 +9,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
   Route::get('/remove/{row_id}','CartController@remove')->name('cart.remove');
   Route::get('/checkout','CheckoutController@index')->name('checkout.index');
   Route::post('payment/create','CheckoutController@create')->name('payment.create');
-  Route::get('payment/callback','CheckoutController@CheckoutRequest')->name('payment.callback');
+  Route::post('payment/callback','CheckoutController@CheckoutRequest')->name('payment.callback');
   Route::get('result','CheckoutController@result')->name('payment.result');
   Route::get('payment_door','CheckoutController@paymentDoor')->name('payment.paymentdoor');
 });
