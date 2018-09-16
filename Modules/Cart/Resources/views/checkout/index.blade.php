@@ -2,6 +2,8 @@
 @section('title','SEPET GÖRÜNTÜLEME |')
 @section('shop_styles')
 	{{ Html::style(mix('assets/common/css/parsley.css')) }}
+@endsection
+	
 @section('content')
 	<body class="animsition">
 
