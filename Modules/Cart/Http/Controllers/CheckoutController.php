@@ -71,9 +71,15 @@ class CheckoutController extends Controller
 
   if( $post['status'] == 'success' ) { ## Ödeme Onaylandı
 
-    $order = Onlineorder::where('basketId',$post['merchant_oid']);
-    $order->update('status',1)
-    $order->product_sale->update('statu',true);
+    $orders = Onlineorder::where('basketId',$merchant_oid)->get();
+    foreach($orders as $order)
+    $order->status = 1;
+    $order->save();
+    $order->productsale->statu = true;
+    $order->productsale->save();
+
+
+
     ## BURADA YAPILMASI GEREKENLER
     ## 1) Siparişi onaylayın.
     ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
@@ -162,6 +168,8 @@ public function create(Request $request)
     $adress_id = $request->adress_id;
     $online_order->createOrder($merchant_oid ,$adress_id,$product_sale);
   }
+
+
   $user_basket = base64_encode(json_encode($basket));
   #
   /* ÖRNEK $user_basket oluşturma - Ürün adedine göre array'leri çoğaltabilirsiniz

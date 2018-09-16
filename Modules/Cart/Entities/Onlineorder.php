@@ -10,6 +10,12 @@ class Onlineorder extends Model
   protected $fillable = [];
   protected $table = 'online_orders';
 
+  public function productsale() {
+    return  $this->hasOne('Modules\Sale\Entities\Productsale','sale_package','sale_package_id');
+  }
+
+
+
   public function nextBasketId() {
     return $this->orderBy('basketId','desc')->first()->basketId + 1;
   }
