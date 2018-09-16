@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Cart\Entities\Onlineorder;
+use Modules\Unit\Entities\Unit;
 use Auth;
 use Modules\Cart\Entities\Payment;
 use App\Models\Auth\User\User;
@@ -38,7 +39,6 @@ class CheckoutController extends Controller
 
   public function checkoutRequest(Request $request) {
     $post = $request;
-    Cart::destroy();
 
     ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
     #
@@ -71,7 +71,9 @@ class CheckoutController extends Controller
      */
 
     if( $post['status'] == 'success' ) { ## Ödeme Onaylandı
-      Cart::destroy();
+      $unit = new Unit;
+      $unit->name = "g";
+      $unit->save();
       ## BURADA YAPILMASI GEREKENLER
       ## 1) Siparişi onaylayın.
       ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
@@ -117,7 +119,7 @@ $merchant_key 	= 'ng6rd4NDRtEnPiWj';
 $merchant_salt	= 'cRJ3xzTbCG85fWo9';
 #
 $online_order = new Onlineorder;
-$basketId = 2000;
+$basketId = 2;
 if(count($online_order->get())) {
   $basketId = $online_order->nextBasketId();
 }
@@ -129,7 +131,7 @@ $email = $request->email;
 $payment_amount	= Cart::total() * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
 #
 ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
-$merchant_oid = $basketId;
+$merchant_oid = rand(1000,2000);
 #
 ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
 $user_name = $request->name . $request->last_name;
@@ -196,7 +198,7 @@ $no_installment	= 1; // Taksit yapılmasını istemiyorsanız, sadece tek çekim
 $max_installment = 0;
 
 $currency = "TL";
-dd($merchant_oid);
+
 ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
 $hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket.$no_installment.$max_installment.$currency.$test_mode;
 $paytr_token=base64_encode(hash_hmac('sha256',$hash_str.$merchant_salt,$merchant_key,true));
