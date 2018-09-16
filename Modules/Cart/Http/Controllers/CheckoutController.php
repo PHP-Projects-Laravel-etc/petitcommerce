@@ -82,8 +82,8 @@ class CheckoutController extends Controller
       $order->productsale->statu = true;
       $order->productsale->save();
     }
-    Mail::to(Auth::user())->send(new SendSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
-    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
+    Mail::to(Auth::user())->send(new SendSaleSuccess(19,3));
+    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess(19,3));
 
 
     ## BURADA YAPILMASI GEREKENLER
