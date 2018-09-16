@@ -176,11 +176,6 @@ public function create(Request $request)
 
 
   }
-  $online_order = new OnlineOrder;
-
-  $orders = Onlineorder::where('basketId',$merchant_oid)->get();
-  Mail::to(Auth::user())->send(new SendSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
-  Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
 
   $user_basket = base64_encode(json_encode($basket));
   #
