@@ -140,10 +140,11 @@ class Payment extends Model
       Session::flash('success','Ödemeniz Alındı');
     }
   }
-  public function saveProductSale($row, $statu) {
-    $product_sale = new Productsale;
+  public function saveProductSale($row, $statu,$sale_package) {
+  /*  $product_sale = new Productsale;
     $last_package = $product_sale->orderBy('id','DESC')->first();
     $sale_package = $product_sale->createSalePackageNumber($last_package);
+*/
     $total_price = 0;
     $customer_id = Auth::user()->id;
     $middleman_id = 1;
