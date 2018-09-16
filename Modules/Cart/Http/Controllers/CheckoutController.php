@@ -13,6 +13,7 @@ use Modules\Cart\Emails\AdminSaleSuccess;
 use Session;
 use Mail;
 use Auth;
+use Modules\Sale\Entities\Productsale;
 use Modules\Product\Entities\Product;
 use Modules\Cart\Entities\Payment;
 use App\Models\Auth\User\User;
