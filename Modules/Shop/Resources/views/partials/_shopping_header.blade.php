@@ -20,9 +20,7 @@
                 <a href="{{ url('/admin') }}" class="flex-c-m trans-04 p-lr-25">{{ __('views.admin.dashboard.title') }}</a>
               @endif
               <a href="{{ url('/logout') }}" class="flex-c-m trans-04 p-lr-25">{{ __('views.welcome.logout') }}</a>
-              <a href="{{route('account.details')}}" class="flex-c-m trans-04 p-lr-25">
-                {{Auth::user()->name}}
-              </a>
+              <a href="{{route('account.details')}}" class="flex-c-m trans-04 p-lr-25">{{Auth::user()->name}}</a>
             @endif
           @endif
         </div>
@@ -158,7 +156,7 @@
               <a href="{{ url('/admin') }}" class="flex-c-m trans-04 p-lr-25">{{ __('views.admin.dashboard.title') }}</a>
             @endif
             <a href="{{ url('/logout') }}" class="flex-c-m trans-04 p-lr-25">{{ __('views.welcome.logout') }}</a>
-            <a href="#" class="flex-c-m trans-04 p-lr-25">
+            <a href="{{route('account.details}}" class="flex-c-m trans-04 p-lr-25">
 
               {{Auth::user()->name}}
             </a>
