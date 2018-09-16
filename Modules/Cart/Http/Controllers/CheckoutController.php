@@ -297,8 +297,9 @@ public function success()
   foreach(Cart::content() as $row) {
     $product = Product::find($row->id);
     $payment->decrementProductQuantity($product,$row);
-    return view('cart::checkout.success');
   }
+  return view('cart::checkout.success');
+
 }
 
 public function fail()
