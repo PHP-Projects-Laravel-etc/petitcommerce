@@ -37,7 +37,6 @@ class CheckoutController extends Controller
   */
 
   public function checkoutRequest(Request $request) {
-    dd($request);
     $post = $request;
     Cart::destroy();
 
@@ -118,7 +117,7 @@ $merchant_key 	= 'ng6rd4NDRtEnPiWj';
 $merchant_salt	= 'cRJ3xzTbCG85fWo9';
 #
 $online_order = new Onlineorder;
-$basketId = 2;
+$basketId = 2000;
 if(count($online_order->get())) {
   $basketId = $online_order->nextBasketId();
 }
@@ -130,7 +129,7 @@ $email = $request->email;
 $payment_amount	= Cart::total() * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
 #
 ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
-$merchant_oid = rand(1000,2000);
+$merchant_oid = $basketId;
 #
 ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
 $user_name = $request->name . $request->last_name;
@@ -188,7 +187,7 @@ $timeout_limit = "30";
 $debug_on = 1;
 
 ## Mağaza canlı modda iken test işlem yapmak için 1 olarak gönderilebilir.
-$test_mode = 0;
+$test_mode = 1;
 
 $no_installment	= 1; // Taksit yapılmasını istemiyorsanız, sadece tek çekim sunacaksanız 1 yapın
 
@@ -197,7 +196,7 @@ $no_installment	= 1; // Taksit yapılmasını istemiyorsanız, sadece tek çekim
 $max_installment = 0;
 
 $currency = "TL";
-
+dd($merchant_oid);
 ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
 $hash_str = $merchant_id .$user_ip .$merchant_oid .$email .$payment_amount .$user_basket.$no_installment.$max_installment.$currency.$test_mode;
 $paytr_token=base64_encode(hash_hmac('sha256',$hash_str.$merchant_salt,$merchant_key,true));
