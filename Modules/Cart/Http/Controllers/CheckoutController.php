@@ -83,7 +83,8 @@ class CheckoutController extends Controller
       $order->productsale->statu = true;
       $order->productsale->save();
     }
-    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($orders[0]->sale_package_id,$orders[0]->$adress_id));
+    Mail::to(User::where('id',$orders[0]->productsale->customer_id)->first())->send(new SendSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
+    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
 
 
     ## BURADA YAPILMASI GEREKENLER
@@ -175,10 +176,10 @@ public function create(Request $request)
     $online_order->createOrder($merchant_oid ,$adress_id,$product_sale);
 
   }
-  $orders = Onlineorder::where('basketId',$merchant_oid)->get();
+  /*$orders = Onlineorder::where('basketId',$merchant_oid)->get();
   Mail::to(User::where('id',$orders[0]->productsale->customer_id)->first())->send(new SendSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
-  Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
-
+  Mail::to(User::where('email','admin.laravel@labs64.com')->first())->send(new AdminSaleSuccess($orders[0]->sale_package_id,$orders[0]->adress_id));
+*/
   $user_basket = base64_encode(json_encode($basket));
   #
   /* ÖRNEK $user_basket oluşturma - Ürün adedine göre array'leri çoğaltabilirsiniz
