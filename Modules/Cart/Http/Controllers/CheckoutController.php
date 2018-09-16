@@ -71,13 +71,13 @@ class CheckoutController extends Controller
 
   if( $post['status'] == 'success' ) { ## Ödeme Onaylandı
 
-    $orders = Onlineorder::where('basketId',$merchant_oid)->get();
-    foreach($orders as $order)
-    $order->status = 1;
-    $order->save();
-    $order->productsale->statu = true;
-    $order->productsale->save();
-
+    $orders = Onlineorder::where('basketId',$post['merchant_oid'])->get();
+    foreach($orders as $order) {
+      $order->status = 1;
+      $order->save();
+      $order->productsale->statu = true;
+      $order->productsale->save();
+    }
 
 
     ## BURADA YAPILMASI GEREKENLER
