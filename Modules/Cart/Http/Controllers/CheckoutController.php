@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Modules\Cart\Entities\Onlineorder;
 use Modules\Cart\Emails\SendSaleSuccess;
 use Modules\Cart\Emails\AdminSaleSuccess;
+use Session;
 use Mail;
 use Auth;
 use Modules\Product\Entities\Product;
@@ -82,7 +83,7 @@ class CheckoutController extends Controller
       $order->productsale->statu = true;
       $order->productsale->save();
     }
-    Mail::to(Auth::user())->send(new SendSaleSuccess(19,3));
+    Mail::to(User::where('email','ugur.muslim@gmail.com')->send(new SendSaleSuccess(19,3));
     Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess(19,3));
 
 
@@ -173,7 +174,6 @@ public function create(Request $request)
     $online_order = new OnlineOrder;
     $adress_id = $request->adress_id;
     $online_order->createOrder($merchant_oid ,$adress_id,$product_sale);
-
 
   }
 
