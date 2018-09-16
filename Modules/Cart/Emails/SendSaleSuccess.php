@@ -21,7 +21,7 @@ class SendSaleSuccess extends Mailable
   public function __construct($sale_package,$adress_id)
   {
     $this->product_sale = Productsale::where('sale_package',$sale_package)->get();
-    $this->adress = AccounT::find($adress_id);
+    $this->adress = Account::find($adress_id);
   }
 
   /**
