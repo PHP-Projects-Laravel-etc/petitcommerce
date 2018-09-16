@@ -37,7 +37,6 @@ class CheckoutController extends Controller
   */
 
   public function checkoutRequest(Request $request) {
-
     $post = $request;
 
     ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
@@ -50,7 +49,7 @@ class CheckoutController extends Controller
     ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
     #
     ## POST değerleri ile hash oluştur.
-    $hash = base64_encode( hash_hmac('sha256', $post['merchant_oid'].$merchant_salt.$post['status'].$post['total_amount'], 1, true) );
+    $hash = base64_encode( hash_hmac('sha256', $post['merchant_oid'].$merchant_salt.$post['status'].$post['total_amount'], $merchant_key, true) );
     #
     ## Oluşturulan hash'i, paytr'dan gelen post içindeki hash ile karşılaştır (isteğin paytr'dan geldiğine ve değişmediğine emin olmak için)
     ## Bu işlemi yapmazsanız maddi zarara uğramanız olasıdır.
