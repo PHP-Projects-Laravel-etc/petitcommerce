@@ -8,13 +8,9 @@
 
 		<div class="text-center" style="background-color:#717fe0; padding:5% 5%">
 			<h2 style="color:white;">
-				BEHİCESGLM</h2>
+				PETITSTORE</h2>
 				<div class="mt-5">
-					@if(Session::has('success'))
 						<h1 style="color:white;">TEBRİKLER! ÖDEMENİZ BAŞARI İLE GERÇEKLEŞTİRİLDİ</h1>
-					@else
-						<h1 style="color:white;">ÜZGÜNÜZ! ÖDEME SIRASINDA BİR HATA OLUŞTU. LÜTFEN TEKRAR DENEYİN</h1>
-					@endif
 				</div>
 			</div>
 			<div class="container mt-5">

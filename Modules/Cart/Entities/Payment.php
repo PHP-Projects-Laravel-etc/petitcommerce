@@ -169,7 +169,7 @@ class Payment extends Model
     $product_sale->middleman_id = $middleman_id;
     $product_sale->sale_package = $sale_package;
     $product_sale->save();
-    $this->decrementProductQuantity($product,$row);
+  //  $this->decrementProductQuantity($product,$row);
     return $product_sale;
   }
   public function decrementProductQuantity($product,$row){

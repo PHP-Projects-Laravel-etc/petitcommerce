@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Cart\Entities\Onlineorder;
+use Modules\Cart\Emails\SendSaleSuccess;
+use Modules\Cart\Emails\AdminSaleSuccess;
+use Mail;
 use Auth;
+use Modules\Product\Entities\Product;
 use Modules\Cart\Entities\Payment;
 use App\Models\Auth\User\User;
 use Cart;
@@ -78,6 +82,8 @@ class CheckoutController extends Controller
       $order->productsale->statu = true;
       $order->productsale->save();
     }
+    Mail::to(Auth::user())->send(new SendSaleSuccess($order->sale_package_id,$order->$adress_id));
+    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($order->sale_package_id,$adress_id));
 
 
     ## BURADA YAPILMASI GEREKENLER
@@ -151,12 +157,12 @@ public function create(Request $request)
   ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
   ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
   ## !!! Siparişi onaylayacağız sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-  $merchant_ok_url = "http://www.siteninadi.com/siparis-basarisiz";
+  $merchant_ok_url = route('payment.success');
   #
   ## Ödeme sürecinde beklenmedik bir hata oluşması durumunda müşterinizin yönlendirileceği sayfa
   ## !!! Bu sayfa siparişi iptal edeceğiniz sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
   ## !!! Siparişi iptal edeceğiniz sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-  $merchant_fail_url = "http://www.siteninadi.com/siparis-basarili";
+  $merchant_fail_url = route('payment.fail');
   #
   ## Müşterinin sepet/sipariş içeriği
   $basket = [];
@@ -167,6 +173,7 @@ public function create(Request $request)
     $online_order = new OnlineOrder;
     $adress_id = $request->adress_id;
     $online_order->createOrder($merchant_oid ,$adress_id,$product_sale);
+
   }
 
 
@@ -281,9 +288,20 @@ public function store(Request $request)
 * @return Response
 */
 
-public function result()
+public function success()
 {
-  return view('cart::checkout.result');
+  $payment = new Payment;
+  foreach(Cart::content() as $row) {
+    $product = Product::find($row->id);
+    $payment->decrementProductQuantity($product,$row);
+    return view('cart::checkout.success');
+  }
+}
+
+public function success()
+{
+  return view('cart::checkout.fail');
+
 }
 
 
