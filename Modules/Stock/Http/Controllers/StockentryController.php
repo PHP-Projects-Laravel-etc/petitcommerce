@@ -205,7 +205,7 @@ class StockentryController extends Controller
           ->where('color_id' , $stock['color_id'])
           ->increment('stock',$stock_difference);
           $product->sizes2()->attach([$stock['size_id']=>['stock_movement_type_id'=>$stock_movement_type,
-          'cateory_id'=>$product_category_id,
+          'cateory_id'=>$product->category_id,
           'color_id'=>$stock['color_id'],
           'quantity'=> $stock_difference,
           'entry_price'=> $entry_price,
