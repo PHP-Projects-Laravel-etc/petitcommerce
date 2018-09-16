@@ -140,7 +140,7 @@ class Payment extends Model
       Session::flash('success','Ödemeniz Alındı');
     }
   }
-  public function saveProductSale($row) {
+  public function saveProductSale($row, $statu) {
     $product_sale = new Productsale;
     $last_package = $product_sale->orderBy('id','DESC')->first();
     $sale_package = $product_sale->createSalePackageNumber($last_package);
@@ -160,7 +160,7 @@ class Payment extends Model
     $product_sale->sale_quantity = $row->qty;
     $product_sale->category_id = $product->category_id;
     $product_sale->sale_price = $row->price * $row->qty;
-    $product_sale->statu = 1;
+    $product_sale->statu = $statu;
     $product_sale->campaign_id = null;
     $product_sale->payment_id = 2;
     $product_sale->created_at = Carbon::now();
@@ -185,7 +185,7 @@ class Payment extends Model
     $online_order->createDoorOrder($adress_id,$product_sale);
     }
     Cart::destroy();
-    
+
     Mail::to(Auth::user())->send(new SendSaleSuccess($product_sale->sale_package,$adress_id));
     Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
     Session::flash('success','Ödemeniz Alındı');

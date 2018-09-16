@@ -29,12 +29,12 @@ class Onlineorder extends Model
 
   }
 */
-  public function createOrder($post_vals, $adress_id) {
+  public function createOrder($merchant_oid ,$adress_id,$product_sale) {
 
     $sarebu_orders = Onlineorder::insert([
-      'basketId' => $post_vals['merchant_oid'],
-      'product_sale_id' => 0,
-      'sale_package_id' => 0,
+      'basketId' => $merchant_oid,
+      'product_sale_id' => $product_sale->id,
+      'sale_package_id' => $product_sale->sale_package,
       'customer_id' => Auth::user()->id,
       'adress_id' => $adress_id,
       'status' => 0,
