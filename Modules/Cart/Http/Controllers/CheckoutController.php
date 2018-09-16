@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Cart\Entities\Onlineorder;
-use Modules\Unit\Entities\Unit;
 use Auth;
 use Modules\Cart\Entities\Payment;
 use App\Models\Auth\User\User;
@@ -38,6 +37,7 @@ class CheckoutController extends Controller
   */
 
   public function checkoutRequest(Request $request) {
+
     $post = $request;
 
     ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
@@ -50,14 +50,14 @@ class CheckoutController extends Controller
     ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
     #
     ## POST değerleri ile hash oluştur.
-    $hash = base64_encode( hash_hmac('sha256', $post['merchant_oid'].$merchant_salt.$post['status'].$post['total_amount'], $merchant_key, true) );
+    $hash = base64_encode( hash_hmac('sha256', $post['merchant_oid'].$merchant_salt.$post['status'].$post['total_amount'], 1, true) );
     #
     ## Oluşturulan hash'i, paytr'dan gelen post içindeki hash ile karşılaştır (isteğin paytr'dan geldiğine ve değişmediğine emin olmak için)
     ## Bu işlemi yapmazsanız maddi zarara uğramanız olasıdır.
-    if( $hash != $post['hash'] )
+    if( $hash != $post['hash'] ) {
       die('PAYTR notification failed: bad hash');
     ###########################################################################
-
+  }
     ## BURADA YAPILMASI GEREKENLER
     ## 1) Siparişin durumunu $post['merchant_oid'] değerini kullanarak veri tabanınızdan sorgulayın.
     ## 2) Eğer sipariş zaten daha önceden onaylandıysa veya iptal edildiyse  echo "OK"; exit; yaparak sonlandırın.
@@ -71,9 +71,7 @@ class CheckoutController extends Controller
      */
 
     if( $post['status'] == 'success' ) { ## Ödeme Onaylandı
-      $unit = new Unit;
-      $unit->name = "g";
-      $unit->save();
+
       ## BURADA YAPILMASI GEREKENLER
       ## 1) Siparişi onaylayın.
       ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
@@ -180,7 +178,7 @@ if( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
 
 ## !!! Eğer bu örnek kodu sunucuda değil local makinanızda çalıştırıyorsanız
 ## buraya dış ip adresinizi (https://www.whatismyip.com/) yazmalısınız. Aksi halde geçersiz paytr_token hatası alırsınız.
-$user_ip=$ip;
+$user_ip="88.235.39.173";
 ##
 ## İşlem zaman aşımı süresi - dakika cinsinden
 $timeout_limit = "30";
@@ -223,6 +221,9 @@ $post_vals=array(
     'test_mode'=>$test_mode
   );
 
+  $online_order = new OnlineOrder;
+  $adress_id = $request->adress_id;
+  $online_order->createOrder($post_vals,$adress_id);
 
 $ch=curl_init();
 curl_setopt($ch, CURLOPT_URL, "https://www.paytr.com/odeme/api/get-token");

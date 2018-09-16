@@ -14,7 +14,7 @@ class Onlineorder extends Model
     return $this->orderBy('basketId','desc')->first()->basketId + 1;
   }
 
-  public function createOrder($checkoutForm,$adress_id,$product_sale) {
+/*  public function createOrder($checkoutForm,$adress_id,$product_sale) {
 
     $sarebu_orders = Onlineorder::insert([
       'basketId' => $checkoutForm->getBasketId(),
@@ -28,6 +28,23 @@ class Onlineorder extends Model
     ]);
 
   }
+*/
+  public function createOrder($post_vals, $adress_id) {
+
+    $sarebu_orders = Onlineorder::insert([
+      'basketId' => $post_vals['merchant_oid'],
+      'product_sale_id' => 0,
+      'sale_package_id' => 0,
+      'customer_id' => Auth::user()->id,
+      'adress_id' => $adress_id,
+      'status' => 0,
+      'paid' => 0,
+      'log' => 9999,
+    ]);
+
+  }
+
+
   public function createDoorOrder($adress_id,$product_sale) {
 
     $sarebu_orders = Onlineorder::insert([
