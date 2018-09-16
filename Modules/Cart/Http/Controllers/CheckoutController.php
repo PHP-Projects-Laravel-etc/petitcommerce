@@ -37,6 +37,7 @@ class CheckoutController extends Controller
   */
 
   public function checkoutRequest(Request $request) {
+    dd($request);
     $post = $request;
     Cart::destroy();
 
@@ -187,7 +188,7 @@ $timeout_limit = "30";
 $debug_on = 1;
 
 ## Mağaza canlı modda iken test işlem yapmak için 1 olarak gönderilebilir.
-$test_mode = 1;
+$test_mode = 0;
 
 $no_installment	= 1; // Taksit yapılmasını istemiyorsanız, sadece tek çekim sunacaksanız 1 yapın
 
