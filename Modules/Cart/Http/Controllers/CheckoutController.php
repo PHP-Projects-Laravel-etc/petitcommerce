@@ -298,7 +298,7 @@ public function success()
   }
 }
 
-public function success()
+public function fail()
 {
   return view('cart::checkout.fail');
 
