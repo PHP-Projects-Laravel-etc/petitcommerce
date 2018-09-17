@@ -23,7 +23,7 @@
 								<div class="block2">
 									<div class="block2-pic hov-img0">
 										<a href="{{route('product.shop-detail',$product->slug)}}">
-										<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:255px; height:315px;" alt="{{$product->slug}}">
+										<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:255px; height:255px;" alt="{{$product->slug}}">
 										</a>
 									</div>
 

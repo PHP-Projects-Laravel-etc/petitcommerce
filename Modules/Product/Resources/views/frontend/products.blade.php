@@ -18,7 +18,7 @@
 								<div class="block2">
 									<div class="block2-pic hov-img0">
 										<a href="{{route('product.shop-detail',$product->slug)}}">
-											<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:255px; height:315px;" alt="{{$product->slug}}">
+											<img src="{{asset('images/products/' . $product->images()->mainImage(1)->name)}}" style="width:255px; height:255px;" alt="{{$product->slug}}">
 										</a>
 									</div>
 
@@ -38,7 +38,10 @@
 						@endif
 					@endforeach
 				</div>
-				{{ $products->links() }}
+				<div class="align-center">
+				{{ $products->links("pagination::bootstrap-4") }}
+			</div>
+
 				<!-- Load more -->
 				<div class="flex-c-m flex-w w-full p-t-45">
 					<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
