@@ -140,7 +140,9 @@ class Payment extends Model
       Session::flash('success','Ödemeniz Alındı');
     }
   }
-  public function saveProductSale($row, $statu,$sale_package) {
+  
+  //  Paytr için bu değişkenleri aşağıdaki fonksiyona ekle :: $statu,$sale_package
+  public function saveProductSale($row) {
   /*  $product_sale = new Productsale;
     $last_package = $product_sale->orderBy('id','DESC')->first();
     $sale_package = $product_sale->createSalePackageNumber($last_package);
