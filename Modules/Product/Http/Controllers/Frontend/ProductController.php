@@ -11,6 +11,7 @@ use Modules\Unit\Entities\Unit;
 use Modules\Attribute\Entities\Attribute;
 use Modules\Attribute\Entities\Attributename;
 use Redis;
+use Illuminate\Support\Facades\Redis as Lredis;
 use Image;
 class ProductController extends Controller
 {
@@ -32,7 +33,7 @@ class ProductController extends Controller
 
   public function show($slug)
   {
-    $storage = Redis::Connection();
+    $storage = Lredis::connection();
     $views = $storage->incr('Ürün:' .$slug . ':views');
     $storage->pipeline(function ($pipe) use ($slug){
       $pipe->zIncrBy('products',1,$slug);
