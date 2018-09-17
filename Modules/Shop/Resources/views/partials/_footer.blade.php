@@ -5,7 +5,7 @@
         <h4 class="stext-301 cl0 p-b-30">
           {{__('views.frontend.footer.wnat_to_work_with_us')}}
         </h4>
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
         Mail Atın veya bizi Arayın!!!
         </p>
       </div>
@@ -16,7 +16,7 @@
           İletişime Geçin
         </h4>
 
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
           Sorunuz mu var? 0532 640 56 18 numarasından ulaşabilirsiniz.
         </p>
 
@@ -33,31 +33,31 @@
           KURUMSAL
         </h4>
 
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
           <a href="{{route('shop.privacy')}}" class="cl7 ">
             Gizlilik Politikası
           </a>
         </p>
 
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
           <a href="{{route('shop.cancel_return')}}" class="cl7 ">
             İade ve Değişim
           </a>
         </p>
 
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
           <a href="{{route('shop.payment-shipment')}}" class="cl7 ">
             Ödeme ve Teslimat
           </a>
         </p>
 
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
           <a href="{{route('shop.terms')}}" class="cl7 ">
           Kullanım Koşulları
         </a>
         </p>
 
-        <p class="stext-107 cl7 size-201 ml-5">
+        <p class="stext-107 cl7 size-201 ml-3">
           <a href="{{route('shop.online_selling_contract')}}" class="cl7 ">
           Mesafeli Satış Sözleşmesi
         </a>
