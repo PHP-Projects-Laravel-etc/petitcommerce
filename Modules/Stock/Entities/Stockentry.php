@@ -52,6 +52,7 @@ class Stockentry extends Model
     $attribute_entry= [];
     foreach($attributes as $size_id=>$attr) {
       foreach($attr as $color_id=>$quan){
+        if($quan) {
         $attribute_stock[$i] = [$size_id =>['stock_movement_type_id' => $stock_movement_type_id,
         'category_id' => $category_id,
         'color_id' => $color_id,
@@ -62,6 +63,7 @@ class Stockentry extends Model
         'package' => $stock_movement_package]];
         $i = $i + 1;
       }
+    }
     }
     return $attribute_stock;
   }

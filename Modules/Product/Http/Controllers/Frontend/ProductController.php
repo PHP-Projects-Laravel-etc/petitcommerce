@@ -22,7 +22,7 @@ class ProductController extends Controller
 
   public function index()
   {
-    $products = Product::orderBy('id','desc')->paginate(16);
+    $products = Product::where('deleted',false)->orderBy('id','desc')->paginate(16);
     $categories = Category::all();
     return view('product::frontend.products')->withProducts($products)
     ->withCategories($categories);

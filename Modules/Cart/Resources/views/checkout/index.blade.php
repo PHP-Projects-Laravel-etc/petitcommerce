@@ -3,7 +3,7 @@
 @section('shop_styles')
 	{{ Html::style(mix('assets/common/css/parsley.css')) }}
 @endsection
-	
+
 @section('content')
 	<body class="animsition">
 
@@ -185,8 +185,8 @@
 						</div>
 
 						</p>
-						{{Form::submit('Ödemeye Git',['class' => 'flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer mt-3', 'name' =>'submit']) }}
-						{{Form::submit('Kapıda Ödeme',['class' => 'flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer mt-3' ,'name' =>'submit']) }}
+					{{--	{{Form::submit('Ödemeye Git',['class' => 'flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer mt-3', 'name' =>'submit']) }}
+		--}}				{{Form::submit('Kapıda Ödeme',['class' => 'flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer mt-3' ,'name' =>'submit']) }}
 
 						{{Form::close() }}
 					</div>

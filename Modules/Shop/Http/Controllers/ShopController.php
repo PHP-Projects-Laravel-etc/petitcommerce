@@ -20,9 +20,9 @@ class ShopController extends Controller
     public function index()
     {
       $category = new Category;
-      $butix_products = Product::whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
-      $accessuar_products = Product::whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
-      $bag_products = Product::whereIn('category_id',$category->getCategoryIds('canta'))->take(8)->inRandomOrder()->get();
+      $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
+      $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
+      $bag_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('canta'))->take(8)->inRandomOrder()->get();
       $categories = Category::all();
         return view('shop::index')
         ->with('butix_products',$butix_products)

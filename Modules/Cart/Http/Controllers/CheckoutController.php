@@ -111,11 +111,9 @@ class CheckoutController extends Controller
 }
 public function create(Request $request)
 {
-  /*  $request->validate(array(
+    $request->validate(array(
   'payment_checkbox' => 'required',
   ));
-
-
   $user = User::find(Auth::user()->id);
   $shopPay = new Payment();
   if($request->submit == "Kapıda Ödeme") {
@@ -126,7 +124,7 @@ public function create(Request $request)
     $a = $shopPay->iyizipay($request);
     $payment_form = '<div id="iyzipay-checkout-form" class="popup"></div>';
     return view('cart::checkout.payment')->withPaymentform($payment_form);
-  }*/
+  }
 
   $merchant_id 	= '121812';
   $merchant_key 	= 'ng6rd4NDRtEnPiWj';
@@ -279,6 +277,7 @@ public function create(Request $request)
     die("PAYTR IFRAME failed. reason:".$result['reason']);
     #########################################################################
   }
+
 }
 
 /**
