@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125905724-1"></script>
   <script>
   window.dataLayer = window.dataLayer || [];
@@ -21,6 +21,7 @@
 <!-- End Google Tag Manager -->
 <title>@yield('title') PETITSTORE</title>
 <meta charset="UTF-8">
+<meta name="description" content="Petit store kaliteli ürünleri ucuza bulabildiğiniz bir platformdur. Giyim , Aksesuar, Çanta kategorilerinde 100'den fazla ürün sizi bekliyor.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 @include('shop::partials._shopping_head')
 @yield('shop_styles')

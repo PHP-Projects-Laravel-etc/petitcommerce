@@ -69,7 +69,45 @@
 		</div>
 		--}}
 		<!-- Filter -->
+		<div class="text-center">
+			<h3><strong>Popüler</strong></h3>
+		</div>
+		<div class="row isotope-grid">
+			@foreach($popular_products as $product)
+				@if($product->images()->mainImage()->first())
+
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
+						<!-- Block2 -->
+
+						<div class="block2 product_block2 mt-5">
+							<div class="block2-pic hov-img0">
+								<a href="{{route('product.shop-detail',$product->slug)}}">
+									<img src="{{asset('images/products/' . $product->images()->mainImage()->name)}}" alt="{{$product->slug}}">
+								</a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14 ">
+								<div class="block2-txt-child1 flex-col-l ">
+									<a href="{{route('product.shop-detail',$product->slug)}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+
+										{{$product->name}}
+									</a>
+									<span class="stext-105 cl3">
+										<span class="simge-tl">&#8378;</span> {{$product->price}}
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endif
+			@endforeach
+		</div>
+
+		<div class="mt-5">
+
 		@include('shop::partials._products_filter')
+	</div>
+{{--
 		<div class="row isotope-grid">
 			@foreach($butix_products as $product)
 				@if($product->images()->mainImage()->first())
@@ -100,13 +138,15 @@
 				@endif
 			@endforeach
 		</div>
-
+--}}
 		{{--<div class="p-b-10 text-center">
 			<h3 class="ltext-103 cl5 ">
 				{{ __('views.shop.instagram_products') }}
 			</h3>
 		</div>
 		--}}
+
+{{--
 		<div class="row isotope-grid mt-5">
 			@foreach($accessuar_products as $product)
 				@if($product->images()->mainImage()->first())
@@ -135,6 +175,7 @@
 				@endif
 			@endforeach
 		</div>
+--}}
 		<div class="row isotope-grid mt-5">
 			@foreach($bag_products as $product)
 				@if($product->images()->mainImage()->first())

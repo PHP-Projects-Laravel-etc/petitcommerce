@@ -10,6 +10,7 @@ use Modules\Product\Entities\Product;
 use Modules\Cart\Emails\SendSaleSuccess;
 use Mail;
 use Auth;
+use Redis;
 
 class ShopController extends Controller
 {
@@ -19,15 +20,22 @@ class ShopController extends Controller
      */
     public function index()
     {
+      $storage = Redis::Connection();
+      $popular = $storage->zRevRange('products',0,3);
+      $popular_products = array();
+      foreach($popular as $value){
+        $popular_products[] = Product::where('slug',$value)->first();
+      }
       $category = new Category;
-      $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
-      $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
+    //  $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
+    //  $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
       $bag_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('canta'))->take(8)->inRandomOrder()->get();
       $categories = Category::all();
         return view('shop::index')
-        ->with('butix_products',$butix_products)
-        ->with('accessuar_products',$accessuar_products)
+      //  ->with('butix_products',$butix_products)
+      //  ->with('accessuar_products',$accessuar_products)
         ->with('bag_products',$bag_products)
+        ->with('popular_products',$popular_products)
         ->withCategories($categories);
     }
 

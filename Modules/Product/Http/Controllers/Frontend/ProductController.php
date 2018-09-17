@@ -10,6 +10,7 @@ use Modules\Category\Entities\Category;
 use Modules\Unit\Entities\Unit;
 use Modules\Attribute\Entities\Attribute;
 use Modules\Attribute\Entities\Attributename;
+use Redis;
 use Image;
 class ProductController extends Controller
 {
@@ -31,6 +32,15 @@ class ProductController extends Controller
 
   public function show($slug)
   {
+    $storage = Redis::Connection();
+    $views = $storage->incr('Ürün:' .$slug . ':views');
+    $storage->pipeline(function ($pipe) use ($slug){
+      $pipe->zIncrBy('products',1,$slug);
+    $views = $pipe->incr('product:'.$slug .':views');
+    });
+
+
+    return $views;
     $product = Product::where('slug',$slug)->first();
     $product_category = $product->category;
     $related_products = $product_category->products()->where('deleted',false)->take(4)->inRandomOrder()->get();
