@@ -39,7 +39,6 @@ class ProductController extends Controller
     $views = $pipe->incr('product:'.$slug .':views');
     });
 */
-
     return $views;
     $product = Product::where('slug',$slug)->first();
     $product_category = $product->category;

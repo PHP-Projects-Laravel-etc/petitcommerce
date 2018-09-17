@@ -109,7 +109,7 @@
 
 		@include('shop::partials._products_filter')
 	</div>
-{{--		<div class="row isotope-grid">
+		<div class="row isotope-grid">
 			@foreach($butix_products as $product)
 				@if($product->images()->mainImage()->first())
 
@@ -144,6 +144,7 @@
 				{{ __('views.shop.instagram_products') }}
 			</h3>
 		</div>
+		--}}
 
 		<div class="row isotope-grid mt-5">
 			@foreach($accessuar_products as $product)
@@ -201,7 +202,7 @@
 				@endif
 			@endforeach
 		</div>
---}}
+
 		<!-- Load more -->
 		<div class="flex-c-m flex-w w-full p-t-45">
 			<a href="{{route('products.products')}}" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
