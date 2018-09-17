@@ -142,11 +142,9 @@ class Payment extends Model
   }
 
   //  Paytr için bu değişkenleri aşağıdaki fonksiyona ekle :: $statu,$sale_package
-  public function saveProductSale($row) {
+  public function saveProductSale($row, $sale_package) {
     //Pay_tr de aşağısı commentleniyor
-    $product_sale = new Productsale;
-    $last_package = $product_sale->orderBy('id','DESC')->first();
-    $sale_package = $product_sale->createSalePackageNumber($last_package);
+  
     //Commentlenecek yer bitti.
     $total_price = 0;
     $customer_id = Auth::user()->id;
@@ -184,15 +182,19 @@ class Payment extends Model
   }
   public function paymentDoor($request) {
     $adress_id = $request->adress_id;
-  foreach(Cart::content() as $row) {
-    $product_sale = $this->saveProductSale($row);
+    $product_sale = new Productsale;
+    $last_package = $product_sale->orderBy('id','DESC')->first();
+    $sale_package = $product_sale->createSalePackageNumber($last_package);
+    foreach(Cart::content() as $row) {
+    $product_sale = $this->saveProductSale($row,$sale_package);
     $online_order = new OnlineOrder;
     $online_order->createDoorOrder($adress_id,$product_sale);
     }
     Cart::destroy();
 
-    Mail::to(Auth::user())->send(new SendSaleSuccess($product_sale->sale_package,$adress_id));
-    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
-    Session::flash('success','Ödemeniz Alındı');
+Mail::to(Auth::user())->send(new SendSaleSuccess($product_sale->sale_package,$adress_id));
+Mail::to(User::where('id','1')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
+Session::flash('success','Ödemeniz Alındı');
+
 }
 }
