@@ -100,6 +100,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+
         ],
     ],
 
@@ -115,8 +116,8 @@ return [
     */
 
     'attributes' => [
+      'payment_checkbox' =>'Mesafeli Satış Sözleşmesi',
       'password' => 'Şifre',
-      'payment-checkbox' =>'Mesafeli Satış Sözleşmesi'
     ],
 
 ];

@@ -168,7 +168,7 @@
 									<p>
 										@include('partials._messages')
 
-										<p><input type="checkbox" class="online-payment-contract" name="payment_checkbox" value="1" data-parsley-checkmin="1" id="checkbox" data-parsley-required="true" data-parsley-trigger="click">
+										<p><input type="checkbox" class="online-payment-contract" name="payment_checkbox1" value="1" data-parsley-checkmin="1" id="checkbox" data-parsley-required="true" data-parsley-trigger="click">
 											 <a href="#ex1" data-toggle="modal"  class="cl10" rel="modal:open">Mesafeli Satış Sözleşmesi'ni Onaylıyorum</a></p>
 								</div>
 							</div>
