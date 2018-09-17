@@ -37,7 +37,7 @@ class ShopController extends Controller
         ->with('butix_products',$butix_products)
         ->with('accessuar_products',$accessuar_products)
         ->with('bag_products',$bag_products)
-      //  ->with('popular_products',$popular_products)
+        ->with('popular_products',$popular_products)
         ->withCategories($categories);
     }
 
