@@ -143,10 +143,11 @@ class Payment extends Model
 
   //  Paytr için bu değişkenleri aşağıdaki fonksiyona ekle :: $statu,$sale_package
   public function saveProductSale($row) {
-  /*  $product_sale = new Productsale;
+    //Pay_tr de aşağısı commentleniyor
+    $product_sale = new Productsale;
     $last_package = $product_sale->orderBy('id','DESC')->first();
     $sale_package = $product_sale->createSalePackageNumber($last_package);
-*/
+    //Commentlenecek yer bitti.
     $total_price = 0;
     $customer_id = Auth::user()->id;
     $middleman_id = 1;
