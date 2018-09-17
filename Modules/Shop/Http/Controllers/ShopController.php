@@ -28,14 +28,15 @@ class ShopController extends Controller
       }
       */
       $category = new Category;
-      $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
+  /*    $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
       $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
       $bag_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('canta'))->take(8)->inRandomOrder()->get();
+*/
       $categories = Category::all();
         return view('shop::index')
-        ->with('butix_products',$butix_products)
-        ->with('accessuar_products',$accessuar_products)
-        ->with('bag_products',$bag_products)
+  //      ->with('butix_products',$butix_products)
+    //    ->with('accessuar_products',$accessuar_products)
+    //    ->with('bag_products',$bag_products)
       //  ->with('popular_products',$popular_products)
         ->withCategories($categories);
     }

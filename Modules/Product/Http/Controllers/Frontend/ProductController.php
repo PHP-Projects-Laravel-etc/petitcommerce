@@ -32,13 +32,13 @@ class ProductController extends Controller
 
   public function show($slug)
   {
-    $storage = Redis::Connection();
+/*    $storage = Redis::Connection();
     $views = $storage->incr('Ürün:' .$slug . ':views');
     $storage->pipeline(function ($pipe) use ($slug){
       $pipe->zIncrBy('products',1,$slug);
     $views = $pipe->incr('product:'.$slug .':views');
     });
-
+*/
 
     return $views;
     $product = Product::where('slug',$slug)->first();
