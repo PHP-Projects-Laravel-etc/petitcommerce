@@ -34,7 +34,7 @@
 				<div class="sec-banner bg0 p-t-80 p-b-50">
 					<div class="container">
 
-						{{--			<div class="row isotope-grid">
+									<div class="row isotope-grid">
 						@foreach($categories as $category)
 						@if($category->image()->where('type',2)->first())
 
@@ -58,7 +58,7 @@
 @endforeach
 </div>
 </div>
---}}	</div>
+</div>
 <!-- Product -->
 <section class="bg0 p-t-23 p-b-140">
 	<div class="container">

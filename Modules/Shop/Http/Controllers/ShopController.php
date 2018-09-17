@@ -11,6 +11,7 @@ use Modules\Cart\Emails\SendSaleSuccess;
 use Mail;
 use Auth;
 use Redis;
+use Illuminate\Support\Facades\Redis as Lredis;
 
 class ShopController extends Controller
 {
@@ -20,13 +21,13 @@ class ShopController extends Controller
      */
     public function index()
     {
-    /*  $storage = Redis::Connection();
+     $storage = LRedis::Connection();
       $popular = $storage->zRevRange('products',0,3);
       $popular_products = array();
       foreach($popular as $value){
         $popular_products[] = Product::where('slug',$value)->first();
       }
-      */
+
       $category = new Category;
       $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
       $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
