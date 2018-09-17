@@ -34,7 +34,6 @@ class ProductController extends Controller
     $product = Product::where('slug',$slug)->first();
     $product_category = $product->category;
     $related_products = $product_category->products()->where('deleted',false)->take(4)->inRandomOrder()->get();
-    dd($related_products);
     return view('product::frontend.detail')->withProduct($product)
     ->withRelatedproducts($related_products);
   }
