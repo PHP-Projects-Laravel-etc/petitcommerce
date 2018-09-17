@@ -34,7 +34,7 @@
 				<div class="sec-banner bg0 p-t-80 p-b-50">
 					<div class="container">
 
-									<div class="row isotope-grid">
+						{{--			<div class="row isotope-grid">
 						@foreach($categories as $category)
 						@if($category->image()->where('type',2)->first())
 
@@ -58,18 +58,18 @@
 @endforeach
 </div>
 </div>
-</div>
+--}}	</div>
 <!-- Product -->
 <section class="bg0 p-t-23 p-b-140">
 	<div class="container">
-		{{-- 	<div class="p-b-10 text-center"  id="products">
+	{{-- 	<div class="p-b-10 text-center"  id="products">
 			<h3 class="ltext-103 cl5">
 				{{ __('views.shop_most_seller') }}
 			</h3>
 		</div>
-		--}}
+--}}
 		<!-- Filter -->
-{{--
+
 		<div class="text-center">
 			<h3><strong>Popüler</strong></h3>
 		</div>
@@ -104,7 +104,7 @@
 				@endif
 			@endforeach
 		</div>
---}}
+
 		<div class="mt-5">
 
 		@include('shop::partials._products_filter')
