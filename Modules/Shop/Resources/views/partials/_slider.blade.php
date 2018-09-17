@@ -1,4 +1,4 @@
-<section class="section-slide">
+{{--<section class="section-slide">
   <div class="wrap-slick1">
     <div class="slick1">
       <div class="item-slick1" style="background-image: url(modules/shop/images/brooke-cagle-195856-unsplash.jpg);">
@@ -75,3 +75,4 @@
     </div>
   </div>
 </section>
+--}}
