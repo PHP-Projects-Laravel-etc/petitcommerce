@@ -140,7 +140,7 @@ class Payment extends Model
       Session::flash('success','Ödemeniz Alındı');
     }
   }
-  
+
   //  Paytr için bu değişkenleri aşağıdaki fonksiyona ekle :: $statu,$sale_package
   public function saveProductSale($row) {
   /*  $product_sale = new Productsale;
@@ -163,7 +163,8 @@ class Payment extends Model
     $product_sale->sale_quantity = $row->qty;
     $product_sale->category_id = $product->category_id;
     $product_sale->sale_price = $row->price * $row->qty;
-    $product_sale->statu = $statu;
+    //Paytr de $statu değişkeni olacak.
+    $product_sale->statu = 1;
     $product_sale->campaign_id = null;
     $product_sale->payment_id = 2;
     $product_sale->created_at = Carbon::now();
