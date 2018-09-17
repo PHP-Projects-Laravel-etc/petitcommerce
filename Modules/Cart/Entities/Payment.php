@@ -192,7 +192,7 @@ class Payment extends Model
     Cart::destroy();
 
     Mail::to(Auth::user())->send(new SendSaleSuccess($product_sale->sale_package,$adress_id));
-    Mail::to(User::where('email','ugur.muslim@gmail.com')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
+    Mail::to(User::where('email','admin.laravel@labs64.com')->first())->send(new AdminSaleSuccess($product_sale->sale_package,$adress_id));
     Session::flash('success','Ödemeniz Alındı');
 }
 }

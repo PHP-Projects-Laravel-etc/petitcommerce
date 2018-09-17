@@ -12,7 +12,6 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
   Route::post('payment/callback','CheckoutController@CheckoutRequest')->name('payment.callback');
   Route::get('success','CheckoutController@success')->name('payment.success');
   Route::get('fail','CheckoutController@fail')->name('payment.fail');
-  Route::get('','CheckoutController@fail')->name('payment.fail');
   Route::get('payment_door','CheckoutController@paymentDoor')->name('payment.paymentdoor');
 });
 

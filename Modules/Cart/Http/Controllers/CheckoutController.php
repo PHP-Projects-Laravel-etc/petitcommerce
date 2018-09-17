@@ -118,7 +118,7 @@ public function create(Request $request)
   $shopPay = new Payment();
   if($request->submit == "Kapıda Ödeme") {
     $shopPay->paymentDoor($request);
-    return view('cart::payment.success');
+    return view('cart::checkout.success');
   }
   else {
     $a = $shopPay->iyizipay($request);
