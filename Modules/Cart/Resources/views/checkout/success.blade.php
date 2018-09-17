@@ -10,7 +10,7 @@
 			<h2 style="color:white;">
 				PETITSTORE</h2>
 				<div class="mt-5">
-						<h1 style="color:white;">TEBRİKLER! ÖDEMENİZ BAŞARI İLE GERÇEKLEŞTİRİLDİ</h1>
+						<h1 style="color:white;">TEBRİKLER! SİPARİŞİNİZ BAŞARI İLE GERÇEKLEŞTİRİLDİ</h1>
 				</div>
 			</div>
 			<div class="container mt-5">
