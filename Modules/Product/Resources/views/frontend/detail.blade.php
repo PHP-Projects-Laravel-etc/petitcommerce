@@ -383,7 +383,7 @@
 	<div class="container">
 		<div class="p-b-45">
 			<h3 class="ltext-106 cl5 txt-center">
-				{{__('views.shop.shop_popular_products')}}
+				{{__('views.shop.shop_related_products')}}
 			</h3>
 		</div>
 
