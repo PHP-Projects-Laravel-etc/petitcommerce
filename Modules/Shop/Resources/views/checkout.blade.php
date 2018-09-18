@@ -104,14 +104,20 @@
 
 					<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 						<div class="size-208 w-full-ssm">
+
 							<span class="stext-110 cl2">
+
 								{{__('views.shop.shipping')}}
 							</span>
 						</div>
 
 						<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 							<p class="mtext-110 cl6 p-t-2">
+								@if(Cart::total() > 100)
+									{{__('views.shop.no_shipping_price')}}
+								@else
 								Kapıda Ödeme - <span class="simge-tl">&#8378;</span>8 dahil değildir.
+							@endif
 							</p>
 							{{--
 							<div class="p-t-15">

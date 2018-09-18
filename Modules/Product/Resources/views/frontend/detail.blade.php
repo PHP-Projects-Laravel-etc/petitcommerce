@@ -102,10 +102,10 @@
 												@endphp
 												@foreach($product->sizes()->where('stock','!=',0)->get() as $size)
 													@if($size->id == $s)
-														@break
-													@endif
-													<option value="{{$size->id . '-' . $size->attribute_long}}">{{$size->attribute_long}}</option>
 
+													@else
+													<option value="{{$size->id . '-' . $size->attribute_long}}">{{$size->attribute_long}}</option>
+												@endif
 													@php
 														$s = $size->id;
 													@endphp
@@ -126,15 +126,16 @@
 											<select class="js-select2 color" name="color" required>
 												<option  disabled selected value>{{__('views.shop.shop_choose_color')}}</option>
 												@php
-													$c = null;
+													$c = array();
 												@endphp
 												@foreach($product->colors()->where('stock','>',0)->get() as $color)
-													@if($color->id == $c)
-														@break
-													@endif
+													@if(in_array($color->id, $c))
+
+													@else
 													<option value="{{$color->id . '-' . $color->attribute_long}}">{{$color->attribute_long}}</option>
+												@endif
 													@php
-														$c = $color->id;
+														$c[] = $color->id;
 													@endphp
 												@endforeach
 											</select>

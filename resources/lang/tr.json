@@ -253,6 +253,7 @@
   "views.shop_total" : "Toplam",
   "views.shop_most_seller" : "En Çok Satanlar",
   "views.shop.shop_popular_products" : "Popüler Ürünler",
+  "views.shop.no_shipping_price" : "100 ₺'yi geçtiğiniz için kargo ücreti ödemeyeceksiniz!",
   "**************************** Buttons **********************": "Buttons",
   "views.buttons.submit" : "Kaydet",
   "views.buttons.proceed_to_checkout": "Ödemeye GİT",
