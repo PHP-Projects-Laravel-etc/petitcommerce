@@ -144,14 +144,14 @@ class InstagramController extends Controller
     $date_last = $request->datelast;
     $time_set = $time->setReportTime($request);
     $instagram = new \InstagramScraper\Instagram();
-    $medias = $instagram->getMedias($request->instagram_company,25);
+    $medias = $instagram->getMedias($request->instagram_company,100);
     $i = 0;
     $product_details = array();
     $attributes = Attribute::all();
     $categories = Category::orderBy('id','asc')->get();
     foreach($medias as $media)
     {
-      if($media['createdTime'] > strtotime($time_set[0]) && $media['createdTime'] < strtotime($time_set[1])) {
+      if($media['createdTime'] >= strtotime($time_set[0]) && $media['createdTime'] <= strtotime($time_set[1])) {
         $name = "Alınamadı";
         $price = null ;
         $product_long = explode('|',$media['caption'],2);
