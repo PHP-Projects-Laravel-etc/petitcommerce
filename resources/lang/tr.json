@@ -252,6 +252,7 @@
   "views.shop_quantity" : "Adet",
   "views.shop_total" : "Toplam",
   "views.shop_most_seller" : "En Çok Satanlar",
+  "views.shop.shop_popular_products" : "Popüler Ürünler",
   "**************************** Buttons **********************": "Buttons",
   "views.buttons.submit" : "Kaydet",
   "views.buttons.proceed_to_checkout": "Ödemeye GİT",

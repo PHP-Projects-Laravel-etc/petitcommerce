@@ -70,8 +70,10 @@
 --}}
 		<!-- Filter -->
 
-		<div class="text-center">
-			<h3><strong>Popüler</strong></h3>
+		<div class="p-b-45">
+			<h3 class="ltext-106 cl5 txt-center">
+				{{__('views.shop.shop_related_products')}}
+			</h3>
 		</div>
 
 		<div class="row isotope-grid">

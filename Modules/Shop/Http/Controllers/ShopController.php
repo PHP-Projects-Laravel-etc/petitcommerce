@@ -27,7 +27,6 @@ class ShopController extends Controller
       foreach($popular as $value){
         $popular_products[] = Product::where('slug',$value)->first();
       }
-
       $category = new Category;
       $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
       $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
