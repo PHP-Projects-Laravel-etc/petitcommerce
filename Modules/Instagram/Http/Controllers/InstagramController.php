@@ -144,7 +144,7 @@ class InstagramController extends Controller
     $date_last = $request->datelast;
     $time_set = $time->setReportTime($request);
     $instagram = new \InstagramScraper\Instagram();
-    $medias = $instagram->getMedias($request->instagram_company,100);
+    $medias = $instagram->getMedias($request->instagram_company,50);
     $i = 0;
     $product_details = array();
     $attributes = Attribute::all();

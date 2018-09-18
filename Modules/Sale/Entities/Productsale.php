@@ -123,11 +123,11 @@ class Productsale extends Model
     $payments_array = array();
     $time = $request->options;
     $date = new Carbon();
-    $time_set = null;
+    $time_set = $request->datelast;
     if(!$time_start){
-      $time_set = Carbon::today()->toDateString();
+      $time_set = Carbon::today()->addHour(23)->toDateTimeString();
       if($time == 'D') {
-        $time_start = Carbon::today()->toDateString();
+        $time_start = Carbon::today()->toDateTimeString();
       }
       if($time == 'W') {
         $time_start = $date->subWeek();
