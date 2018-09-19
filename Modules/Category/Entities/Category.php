@@ -2,6 +2,8 @@
 
 
 namespace Modules\Category\Entities;
+use Cache;
+use Illuminate\Support\Facades\Redis as Lredis;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,7 +39,9 @@ class Category extends Model
   }
 
 
-  public  function getCategoryIds($slug) {
+  public  function getCategoryIds($slug,$cache_name) {
+
+    $id = Cache::remember($cache_name,1,function() use($slug){
     $categories = $this->getAllRelatedCategories($slug);
     $id = [];
     foreach($categories as $category) {
@@ -49,6 +53,9 @@ class Category extends Model
     }
     $id[] = $category->id;
     }
+
+    return $id;
+  });
     return $id;
   }
 

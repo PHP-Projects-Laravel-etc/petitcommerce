@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Modules\Category\Entities\Category;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
+use Cache;
 class CategoryController extends Controller
 {
   /**
@@ -55,6 +55,9 @@ class CategoryController extends Controller
     }
 
     $category = Category::create(['name' => request('name'),'slug' => $slug,'head_category_id' => request('head_category_id'),'number_low' => request('number_low'),'number_high' => request('number_high')]);
+    Cache::forget('Butix_Cache');
+    Cache::forget('Bags_Cache');
+    Cache::forget('Accesuar_Cache');
     /*          if(request('sizes')) {
     $size_array = array();
     $i = 0;

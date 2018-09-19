@@ -11,6 +11,8 @@ use Modules\Cart\Emails\SendSaleSuccess;
 use Mail;
 use Auth;
 use Redis;
+use DB;
+use Cache;
 use Illuminate\Support\Facades\Redis as Lredis;
 
 class ShopController extends Controller
@@ -27,10 +29,14 @@ class ShopController extends Controller
       foreach($popular as $value){
         $popular_products[] = Product::where('slug',$value)->first();
       }
+      $cache_butix = "Butix_Cache";
+      $cache_bags = "Bags_Cache";
+      $cache_accesuar = "Accesuar_Cache";
+
       $category = new Category;
-      $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim'))->take(8)->inRandomOrder()->get();
-      $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar'))->take(8)->inRandomOrder()->get();
-      $bag_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('canta'))->take(8)->inRandomOrder()->get();
+      $butix_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('giyim',$cache_butix))->orderBy('id','DESC')->take(8)->get();
+      $accessuar_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('aksesuar',$cache_accesuar))->orderBy('id','DESC')->take(8)->get();
+      $bag_products = Product::where('deleted',false)->whereIn('category_id',$category->getCategoryIds('canta',$cache_bags))->orderBy('id','DESC')->take(8)->get();
       $categories = Category::all();
         return view('shop::index')
         ->with('butix_products',$butix_products)
