@@ -153,14 +153,14 @@
 			</h3>
 		</div>
 		--}}
-
+		<div class="p-b-45 mt-5">
+			<h3 class="ltext-106 cl5 txt-center">
+				{{__('views.shop.shop_accesuar_products')}}
+			</h3>
+		</div>
 
 		<div class="row isotope-grid mt-5">
-			<div class="p-b-45">
-				<h3 class="ltext-106 cl5 txt-center">
-					{{__('views.shop.shop_accesuar_products')}}
-				</h3>
-			</div>	@foreach($accessuar_products as $product)
+			@foreach($accessuar_products as $product)
 				@if($product->images()->mainImage()->first())
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
@@ -188,14 +188,14 @@
 			@endforeach
 		</div>
 
-
+		<div class="p-b-45 mt-5">
+			<h3 class="ltext-106 cl5 txt-center">
+				{{__('views.shop.shop_bags_products')}}
+			</h3>
+		</div>
 
 		<div class="row isotope-grid mt-5">
-			<div class="p-b-45">
-				<h3 class="ltext-106 cl5 txt-center">
-					{{__('views.shop.shop_bags_products')}}
-				</h3>
-			</div>	@foreach($bag_products as $product)
+			@foreach($bag_products as $product)
 				@if($product->images()->mainImage()->first())
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
