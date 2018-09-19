@@ -41,7 +41,7 @@ class Category extends Model
 
   public  function getCategoryIds($slug,$cache_name) {
 
-    $id = Cache::remember($cache_name,1,function() use($slug){
+    $id = Cache::rememberForever($cache_name,function() use($slug){
     $categories = $this->getAllRelatedCategories($slug);
     $id = [];
     foreach($categories as $category) {
