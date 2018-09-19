@@ -111,6 +111,12 @@
 
 		@include('shop::partials._products_filter')
 	</div>
+
+	<div class="p-b-45">
+		<h3 class="ltext-106 cl5 txt-center">
+			{{__('views.shop.shop_butix_products')}}
+		</h3>
+	</div>
 		<div class="row isotope-grid">
 			@foreach($butix_products as $product)
 				@if($product->images()->mainImage()->first())
@@ -147,6 +153,11 @@
 			</h3>
 		</div>
 		--}}
+		<div class="p-b-45">
+			<h3 class="ltext-106 cl5 txt-center">
+				{{__('views.shop.shop_accesuar_products')}}
+			</h3>
+		</div>
 
 		<div class="row isotope-grid mt-5">
 			@foreach($accessuar_products as $product)
@@ -176,6 +187,13 @@
 				@endif
 			@endforeach
 		</div>
+
+		<div class="p-b-45">
+			<h3 class="ltext-106 cl5 txt-center">
+				{{__('views.shop.shop_bags_products')}}
+			</h3>
+		</div>
+
 		<div class="row isotope-grid mt-5">
 			@foreach($bag_products as $product)
 				@if($product->images()->mainImage()->first())
