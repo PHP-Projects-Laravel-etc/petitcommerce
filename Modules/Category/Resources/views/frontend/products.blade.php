@@ -13,7 +13,11 @@
 			</span>
 		</div>
 		<section class="bg0 p-t-23 p-b-140">
-			<h2 class="text-center"><strong>{{$category->name}}</strong></h2>
+			<div class="p-b-45">
+				<h3 class="ltext-106 cl5 txt-center">
+					{{$category->name}}
+				</h3>
+			</div>
 			<div class="container">
 				<div class="row isotope-grid mt-5">
 					@foreach($products as $product)
