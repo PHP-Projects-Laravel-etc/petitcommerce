@@ -21,6 +21,7 @@
 <title>@yield('title') PETITSTORE</title>
 <meta charset="UTF-8">
 <meta name="description" content="Petit store kaliteli ürünleri ucuza bulabildiğiniz bir platformdur. Giyim , Aksesuar, Çanta kategorilerinde 100'den fazla ürün sizi bekliyor.">
+<meta name="yandex-verification" content="3ea7ec4066c67a32" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 @include('shop::partials._shopping_head')
 @yield('shop_styles')
