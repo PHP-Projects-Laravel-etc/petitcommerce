@@ -117,7 +117,7 @@
 			{{__('views.shop.shop_butix_products')}}
 		</h3>
 	</div>
-		<div class="row isotope-grid">
+		<div class="row isotope-grid" id="butix_products">
 			@foreach($butix_products as $product)
 				@if($product->images()->mainImage()->first())
 
