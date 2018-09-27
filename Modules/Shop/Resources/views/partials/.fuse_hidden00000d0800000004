@@ -12,7 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 {{ Html::style(mix('assets/shop/css/shop.css')) }}
-
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/css/main.css')}}">

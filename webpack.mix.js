@@ -25,7 +25,7 @@ mix.webpackConfig({
 });
 
 mix.js([
- 'node_modules/bootstrap/dist/js/bootstrap.js',
+  'node_modules/bootstrap/dist/js/bootstrap.js',
  'resources/assets/web/js/web.js',
 ], 'public/assets/web/js/web.js').version();
 
@@ -144,6 +144,16 @@ mix.js([
    'resources/assets/admin/js/dropzone.js',
  ], 'public/assets/admin/js/dropzone.js').version();
 
+
+mix.styles([
+  'Modules/Shop/Resources/assets/vendor/animate/animate.css',
+  'Modules/Shop/Resources/assets/vendor/animsition/css/animsition.min.css',
+  'Modules/Shop/Resources/assets/vendor/css-hamburgers/hamburgers.min.css',
+  'Modules/Shop/Resources/assets/vendor/daterangepicker/daterangepicker.css',
+  'Modules/Shop/Resources/assets/vendor/MagnificPopup/magnific-popup.css',
+  'Modules/Shop/Resources/assets/vendor/perfect-scrollbar/perfect-scrollbar.css',
+  'Modules/Shop/Resources/assets/vendor/slick/slick.css',
+], 'public/assets/shop/css/shop.css').version();
 
 
  mix.styles([
