@@ -1,6 +1,7 @@
 @extends('shop::layouts.master')
 @section('shop_styles')
 	{{ Html::style(mix('assets/common/css/parsley.css')) }}
+	 {{ Html::style(mix('assets/common/css/select2.min.css')) }}	
 @endsection
 @section('title','ÜRÜN |')
 @section('content')

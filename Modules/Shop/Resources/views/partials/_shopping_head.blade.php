@@ -11,21 +11,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/css-hamburgers/hamburgers.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/animsition/css/animsition.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/daterangepicker/daterangepicker.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/slick/slick.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/MagnificPopup/magnific-popup.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
+{{ Html::style(mix('assets/shop/css/shop.css')) }}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/css/main.css')}}">
