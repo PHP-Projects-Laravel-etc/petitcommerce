@@ -1,12 +1,14 @@
 <!--===============================================================================================-->
   <script src="{{asset('modules/shop/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/animsition/js/animsition.min.js')}}"></script>
 <!--===============================================================================================-->
   <script src="{{asset('modules/shop/vendor/bootstrap/js/popper.js')}}"></script>
   <script src="{{asset('modules/shop/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 <!--===============================================================================================-->
   <script src="{{asset('modules/shop/vendor/select2/select2.min.js')}}"></script>
+  {{ Html::script(mix('assets/shop/js/shop.js')) }}
+
+
   <script>
     $(".js-select2").each(function(){
       $(this).select2({
@@ -16,18 +18,10 @@
     })
   </script>
 <!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/daterangepicker/moment.min.js')}}"></script>
-  <script src="{{asset('modules/shop/vendor/daterangepicker/daterangepicker.js')}}"></script>
-<!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/slick/slick.min.js')}}"></script>
-  <script src="{{asset('modules/shop/js/slick-custom.js')}}"></script>
-<!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/parallax100/parallax100.js')}}"></script>
   <script>
         $('.parallax100').parallax100();
   </script>
 <!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
   <script>
     $('.gallery-lb').each(function() { // the containers for all your galleries
       $(this).magnificPopup({
@@ -41,9 +35,7 @@
     });
   </script>
 <!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/isotope/isotope.pkgd.min.js')}}"></script>
 <!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/sweetalert/sweetalert.min.js')}}"></script>
   <script>
     $('.js-addwish-b2').on('click', function(e){
       e.preventDefault();
@@ -81,7 +73,6 @@
 
   </script>
 <!--===============================================================================================-->
-  <script src="{{asset('modules/shop/vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
   <script>
     $('.js-pscroll').each(function(){
       $(this).css('position','relative');
@@ -99,4 +90,3 @@
   </script>
 <!--===============================================================================================-->
   <script src="{{asset('modules/shop/js/main.js')}}"></script>
-  
