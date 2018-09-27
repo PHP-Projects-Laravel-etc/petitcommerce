@@ -149,26 +149,26 @@ mix.styles([
   'Modules/Shop/Resources/assets/vendor/animate/animate.css',
   'Modules/Shop/Resources/assets/vendor/animsition/css/animsition.min.css',
   'Modules/Shop/Resources/assets/vendor/css-hamburgers/hamburgers.min.css',
-  'Modules/Shop/Resources/assets/vendor/daterangepicker/daterangepicker.css',
-  'Modules/Shop/Resources/assets/vendor/MagnificPopup/magnific-popup.css',
-  'Modules/Shop/Resources/assets/vendor/perfect-scrollbar/perfect-scrollbar.css',
   'Modules/Shop/Resources/assets/vendor/slick/slick.css',
 ], 'public/assets/shop/css/shop.css').version();
-
+/*'Modules/Shop/Resources/assets/vendor/MagnificPopup/magnific-popup.css',
+'Modules/Shop/Resources/assets/vendor/daterangepicker/daterangepicker.css',
+'Modules/Shop/Resources/assets/vendor/perfect-scrollbar/perfect-scrollbar.css',
+*/
 
 mix.scripts([
   'Modules/Shop/Resources/assets/vendor/animsition/js/animsition.min.js',
-  'Modules/Shop/Resources/assets/vendor/daterangepicker/daterangepicker.js',
-  'Modules/Shop/Resources/assets/vendor/daterangepicker/moment.min.js',
   'Modules/Shop/Resources/assets/vendor/slick/slick.min.js',
   'Modules/Shop/Resources/assets/js/slick-custom.js',
-  'Modules/Shop/Resources/assets/vendor/parallax100/parallax100.js',
-  'Modules/Shop/Resources/assets/vendor/MagnificPopup/jquery.magnific-popup.min.js',
   'Modules/Shop/Resources/assets/vendor/isotope/isotope.pkgd.min.js',
   'Modules/Shop/Resources/assets/vendor/sweetalert/sweetalert.min.js',
-  'Modules/Shop/Resources/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js',
 ], 'public/assets/shop/js/shop.js').version();
-
+/*'Modules/Shop/Resources/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js',
+'Modules/Shop/Resources/assets/vendor/MagnificPopup/jquery.magnific-popup.min.js',
+'Modules/Shop/Resources/assets/vendor/daterangepicker/daterangepicker.js',
+'Modules/Shop/Resources/assets/vendor/daterangepicker/moment.min.js',
+'Modules/Shop/Resources/assets/vendor/parallax100/parallax100.js',
+*/
 
 mix.styles([
   'node_modules/select2/dist/css/select2.css',
