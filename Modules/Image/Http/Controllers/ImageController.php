@@ -40,11 +40,13 @@ class ImageController extends Controller
   {
     $filename = str_replace(' ','_',$filename);
     $path=public_path().'/images/' . $foldername . '/' .$filename;
+    $path_200_230=public_path().'/images/' . $foldername . '/200-230/' .$filename;
     if (file_exists($path)) {
       unlink($path);
+      unlink($path_200_230);
     }
     ImageTable::where('name',$filename)->delete();
-    return back();
+      return back();
   }
 
 
