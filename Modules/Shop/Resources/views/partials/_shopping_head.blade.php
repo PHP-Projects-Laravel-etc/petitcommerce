@@ -7,8 +7,7 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('modules/shop/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
-
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.8.94/fonts/materialdesignicons-webfont.woff2">
+<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/fonts/iconic/css/material-design-iconic-font.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('modules/shop/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
