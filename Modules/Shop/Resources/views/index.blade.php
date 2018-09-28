@@ -84,7 +84,7 @@
 						<!-- Block2 -->
 
 						<div class="block2 product_block2 mt-5">
-							<div class="block2-pic hov-img0">
+							<div class="block2-pic ">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
 									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" alt="{{$product->slug}}">
 								</a>
@@ -126,7 +126,7 @@
 
 						<div class="block2 product_block2 mt-5">
 							{{-- Eğer hover yapılınca fotografın yakınlaşmasını istersek hov-img0--}}
-							<div class="block2-pic hov-img0">
+							<div class="block2-pic">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
 									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" alt="{{$product->slug}}">
 								</a>
