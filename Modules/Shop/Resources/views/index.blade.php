@@ -83,7 +83,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
 
-						<div class="block2 product_block2 mt-5" style="margin-left: 14%;">
+						<div class="block2 product_block2 mt-5">
 							<div class="block2-pic hov-img0">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
 									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" alt="{{$product->slug}}">
@@ -124,7 +124,7 @@
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
 						<!-- Block2 -->
 
-						<div class="block2 product_block2 mt-5" style="margin-left: 14%;">
+						<div class="block2 product_block2 mt-5">
 							{{-- Eğer hover yapılınca fotografın yakınlaşmasını istersek hov-img0--}}
 							<div class="block2-pic hov-img0">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
