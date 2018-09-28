@@ -81,6 +81,11 @@ class InstagramController extends Controller
         if($image = file_get_contents($img_url)) {
           $file_name = $slug . '.jpg';
           $location = public_path('images/products/'. $file_name);
+          $location_200_230 = public_path('images/products/200-230/'. $file_name);
+
+          Image::make($image)->resize(1200, 1200)->save($location);
+          Image::make($image)->resize(200, 230)->save($location_200_230);
+
           //Public'e alındı. İstenirse storage 'a da alınabilir. Boyutlarıyla oynanmadı.'
           Image::make($image)->save($location);
           ImageTable::insert([

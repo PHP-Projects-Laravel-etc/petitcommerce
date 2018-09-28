@@ -29,8 +29,10 @@ class ImageController extends Controller
         'updated_at' => Carbon::now(),
       ]);
       $folder_name = $request->foldername;
-      $location = public_path('images/' . '/' . $folder_name. '/'. $filename);
+      $location = public_path('images/' . $folder_name . '/' . $filename);
+      $location_200_230 = public_path('images/' .$folder_name  .  '/200-230/'. $filename);
       Image::make($image)->resize(1200, 1200)->save($location);
+      Image::make($image)->resize(200, 230)->save($location_200_230);
     }
   }
 
