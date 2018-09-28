@@ -4,8 +4,7 @@
 	<style media="screen">
 	.product_block2
 	{
-		width:200px;
-		height: 230px;
+	
 	}
 	@media(max-width: 575px) {
 
@@ -16,10 +15,7 @@
 		}
 		@media (max-width: 767px) {
 
-			.block2-txt-child1 {
-				width: calc(100% - 30px);
-				position: relative;
-				left: 0 !important;
+
 			}
 
 			</style>
