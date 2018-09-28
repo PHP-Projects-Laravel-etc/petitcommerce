@@ -18,7 +18,7 @@
 			.block2-txt-child1 {
 				width: calc(100% - 30px);
 				position: relative;
-				left: 0 !important;
+				left: 20% !important;
 			}
 
 			</style>
