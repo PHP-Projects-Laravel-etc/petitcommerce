@@ -14,5 +14,4 @@
 {{ Html::style(mix('assets/shop/css/shop.css')) }}
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('modules/shop/css/util.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('modules/shop/css/main.css')}}">
 <!--===============================================================================================-->
