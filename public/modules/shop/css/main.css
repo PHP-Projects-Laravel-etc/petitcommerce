@@ -7,27 +7,22 @@ Primary use:  Company
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [LAYOUT]
-
 * body
   + Header / header
   + Page Content / .page-content .name-page
         + Section Layouts / section .name-section
         ...
   + Footer / footer
-
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [COLOR CODES]
-
 # Text Color      :
 # Primary Color 01:
 # Primary Color 02:
 # Primary Color 03:
-
 ------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [TYPOGRAPHY]
-
 Body            : 16px/1.6 '', Arial, sans-serif;
 Title           : 18px/1.6 '', Arial, sans-serif;
 Paragrap        : 18px/1.6 '', Arial, sans-serif;
@@ -89,7 +84,7 @@ ul.with-bullets ,li.with-bullets {
 }
 /* TL Simgesi */
 
-@font-face {
+/*@font-face {
   font-family: Poppins-Regular;
   src: url('../fonts/Poppins/Poppins-Regular.ttf');
 }
@@ -124,8 +119,9 @@ ul.with-bullets ,li.with-bullets {
   src: url('../fonts/Poppins/Poppins-SemiBold.ttf');
 }
 
-
+*/
 /*---------------------------------------------*/
+/*
 @font-face {
   font-family: PlayfairDisplay-Regular;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf');
@@ -135,8 +131,9 @@ ul.with-bullets ,li.with-bullets {
   font-family: PlayfairDisplay-Bold;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf');
 }
-
+*/
 /*---------------------------------------------*/
+/*
 @font-face {
   font-family: Montserrat-Regular;
   src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
@@ -146,7 +143,7 @@ ul.with-bullets ,li.with-bullets {
   font-family: Montserrat-Bold;
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf');
 }
-
+*/
 
 /*//////////////////////////////////////////////////////////////////
 [ RS PLUGIN ]*/
@@ -3387,7 +3384,7 @@ input.num-product::-webkit-inner-spin-button {
   }
 
 
-}
+
 
 
 /*//////////////////////////////////////////////////////////////////

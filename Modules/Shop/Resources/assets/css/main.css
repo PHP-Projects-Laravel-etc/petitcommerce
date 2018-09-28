@@ -84,7 +84,7 @@ ul.with-bullets ,li.with-bullets {
 }
 /* TL Simgesi */
 
-@font-face {
+/*@font-face {
   font-family: Poppins-Regular;
   src: url('../fonts/Poppins/Poppins-Regular.ttf');
 }
@@ -119,8 +119,9 @@ ul.with-bullets ,li.with-bullets {
   src: url('../fonts/Poppins/Poppins-SemiBold.ttf');
 }
 
-
+*/
 /*---------------------------------------------*/
+/*
 @font-face {
   font-family: PlayfairDisplay-Regular;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf');
@@ -130,8 +131,9 @@ ul.with-bullets ,li.with-bullets {
   font-family: PlayfairDisplay-Bold;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf');
 }
-
+*/
 /*---------------------------------------------*/
+/*
 @font-face {
   font-family: Montserrat-Regular;
   src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
@@ -141,7 +143,7 @@ ul.with-bullets ,li.with-bullets {
   font-family: Montserrat-Bold;
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf');
 }
-
+*/
 
 /*//////////////////////////////////////////////////////////////////
 [ RS PLUGIN ]*/
