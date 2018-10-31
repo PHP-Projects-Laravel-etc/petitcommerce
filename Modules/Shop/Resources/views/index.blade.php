@@ -127,7 +127,7 @@
 							{{-- Eğer hover yapılınca fotografın yakınlaşmasını istersek hov-img0--}}
 							<div class="block2-pic">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
-									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" alt="{{$product->slug}}">
+									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">
 								</a>
 							</div>
 
@@ -167,7 +167,7 @@
 						<div class="block2 product_block2 mt-5">
 							<div class="block2-pic">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
-									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage(1)->name)}}" alt="{{$product->slug}}">
+									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage(1)->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">
 								</a>
 							</div>
 
@@ -202,7 +202,7 @@
 						<div class="block2 product_block2 mt-5">
 							<div class="block2-pic">
 								<a href="{{route('product.shop-detail',$product->slug)}}">
-									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage(1)->name)}}"  alt="{{$product->slug}}">
+									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage(1)->name)}}"  style="width:200px; height:230px;" alt="{{$product->slug}}">
 								</a>
 							</div>
 
