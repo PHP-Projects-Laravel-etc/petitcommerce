@@ -37,6 +37,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::whereNotNull('head_category_id')
+            ->where('number_low','>',100)
             ->orderBy('id', 'asc')
             ->get();
         $units = Unit::all();
