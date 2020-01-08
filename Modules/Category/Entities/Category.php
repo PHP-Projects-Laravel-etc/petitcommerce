@@ -4,8 +4,12 @@
 namespace Modules\Category\Entities;
 use Cache;
 use Illuminate\Support\Facades\Redis as Lredis;
-
 use Illuminate\Database\Eloquent\Model;
+
+/**
+* @mixin \Eloquent
+* @package Modules\Category\Entities
+ */
 
 class Category extends Model
 {
@@ -30,18 +34,32 @@ class Category extends Model
     return  $this->hasMany('Modules\Product\Entities\Product');
   }
 
-  public function scopeGetCategory($query,$slug){
+    /**
+     * @param $query
+     * @param $slug
+     *
+     * @return mixed
+     */
+    public function scopeGetCategory($query,$slug){
     return $query->where('slug',$slug)->first();
   }
 
-  public function scopeGetAllRelatedCategories($query,$slug) {
+    /**
+     * @param $query
+     * @param $slug
+     *
+     * @return mixed
+     */
+    public function scopeGetAllRelatedCategories($query,$slug) {
     return $query->where('head_category_id',$this->getCategory($slug)->id)->get();
   }
 
 
   public  function getCategoryIds($slug,$cache_name) {
 
-    $id = Cache::rememberForever($cache_name,function() use($slug){
+    $id = Cache::rememberForever(/**
+     * @return array
+     */ $cache_name,function() use($slug){
     $categories = $this->getAllRelatedCategories($slug);
     $id = [];
     foreach($categories as $category) {

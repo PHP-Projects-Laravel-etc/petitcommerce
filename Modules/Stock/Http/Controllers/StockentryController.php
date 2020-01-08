@@ -36,7 +36,9 @@ class StockentryController extends Controller
 
   public function instant()
   {
-    $categories = Category::orderBy('id','asc')->get();
+      $categories = Category::whereNotNull('head_category_id')
+          ->orderBy('id', 'asc')
+          ->get();
     $units = Unit::all();
     $attribute_names = Attributename::all();
     $attributes = Attribute::all();
@@ -46,7 +48,12 @@ class StockentryController extends Controller
     ->withAttributes($attributes);
   }
 
-  public function instantStore(Request $request)
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function instantStore(Request $request)
   {
     $slug = str_slug($request->name, "-");
     $product = new Product;

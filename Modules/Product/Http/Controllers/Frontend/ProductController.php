@@ -43,6 +43,21 @@ class ProductController extends Controller
     $product = Product::where('slug',$slug)->first();
     $product_category = $product->category;
     $related_products = $product_category->products()->where('deleted',false)->take(4)->inRandomOrder()->get();
+    $related_products = Category::select([
+        'images.name as image_path',
+        'products.name as product_name',
+        'products.price as product_price',
+        'products.slug as product_slug',
+    ])->
+    leftJoin('products','products.category_id','=','categories.id')
+        ->leftJoin('images', 'images.type_id','=','products.id')
+        ->where('products.deleted',false)
+        ->where('images.main',true)
+        ->take(4)
+        ->inRandomOrder()
+        ->get();
+
+
     return view('product::frontend.detail')->withProduct($product)
     ->withRelatedproducts($related_products);
   }

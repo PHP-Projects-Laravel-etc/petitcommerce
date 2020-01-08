@@ -69,42 +69,42 @@
 --}}
 		<!-- Filter -->
 
-		<div class="p-b-45">
-			<h3 class="ltext-106 cl5 txt-center">
-				{{__('views.shop.shop_popular_products')}}
-			</h3>
-		</div>
+{{--		<div class="p-b-45">--}}
+{{--			<h3 class="ltext-106 cl5 txt-center">--}}
+{{--				{{__('views.shop.shop_popular_products')}}--}}
+{{--			</h3>--}}
+{{--		</div>--}}
 
-		<div class="row isotope-grid">
-			@foreach($popular_products as $product)
-				@if($product->images()->mainImage()->first())
+{{--		<div class="row isotope-grid">--}}
+{{--			@foreach($popular_products as $product)--}}
+{{--				@if($product->images()->mainImage()->first())--}}
 
-					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">
-						<!-- Block2 -->
+{{--					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->slug}}">--}}
+{{--						<!-- Block2 -->--}}
 
-						<div class="block2 product_block2  mt-5">
-							<div class="block2-pic">
-								<a href="{{route('product.shop-detail',$product->slug)}}">
-									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">
-								</a>
-							</div>
+{{--						<div class="block2 product_block2  mt-5">--}}
+{{--							<div class="block2-pic">--}}
+{{--								<a href="{{route('product.shop-detail',$product->slug)}}">--}}
+{{--									<img src="{{asset('images/products/200-230/' . $product->images()->mainImage()->name)}}" style="width:200px; height:230px;" alt="{{$product->slug}}">--}}
+{{--								</a>--}}
+{{--							</div>--}}
 
-							<div class="block2-txt flex-w flex-t p-t-14 ">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a href="{{route('product.shop-detail',$product->slug)}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+{{--							<div class="block2-txt flex-w flex-t p-t-14 ">--}}
+{{--								<div class="block2-txt-child1 flex-col-l ">--}}
+{{--									<a href="{{route('product.shop-detail',$product->slug)}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">--}}
 
-										{{$product->name}}
-									</a>
-									<span class="stext-105 cl3">
-										<span class="simge-tl">&#8378;</span> {{$product->price}}
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				@endif
-			@endforeach
-		</div>
+{{--										{{$product->name}}--}}
+{{--									</a>--}}
+{{--									<span class="stext-105 cl3">--}}
+{{--										<span class="simge-tl">&#8378;</span> {{$product->price}}--}}
+{{--									</span>--}}
+{{--								</div>--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--					</div>--}}
+{{--				@endif--}}
+{{--			@endforeach--}}
+{{--		</div>--}}
 
 		<div class="mt-5">
 

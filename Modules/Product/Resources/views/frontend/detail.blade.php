@@ -392,26 +392,25 @@
 		<!-- Slide2 -->
 		<div class="row isotope-grid">
 					@foreach($relatedproducts as $related_product)
-					@if($product->images()->mainImage()->first())
 						<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->category->name}}">
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-pic hov-img0">
-									<img src="{{asset('images/products/' . $related_product->images()->mainImage()->name)}}" style="width:255px; height:315px;"alt="IMG-PRODUCT">
+									<img src="{{asset('images/products/200-230/' . $related_product->image_path)}}" style="width:255px; height:315px;"alt="IMG-PRODUCT">
 
-									<a href="{{route('product.shop-detail',$product->slug)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									<a href="{{route('product.shop-detail',$related_product->product_slug)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 										{{__('views.shop.products_quickview')}}
 									</a>
 								</div>
 
 								<div class="block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 flex-col-l ">
-										<a href="{{route('product.shop-detail',$product->slug)}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											{{$related_product->name}}
+										<a href="{{route('product.shop-detail',$related_product->product_slug)}}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{$related_product->product_name}}
 										</a>
 
 										<span class="stext-105 cl3">
-											<span class="simge-tl">&#8378;</span> {{$related_product->price}}
+											<span class="simge-tl">&#8378;</span> {{$related_product->product_price}}
 
 										</span>
 									</div>
@@ -425,7 +424,6 @@
 									</div>
 									</div>
 								</div>
-						@endif
 					@endforeach
 				</div>
 			</div>
