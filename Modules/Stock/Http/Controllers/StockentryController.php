@@ -61,11 +61,13 @@ class StockentryController extends Controller
         $slug = str_slug($request->name, "-");
         $product = new Product;
 
-        if ($product->productNameValidation($request->name)) {
+        if ($product->productNameValidation($slug)) {
             $error = "Bu isimde bir ürün zaten yaratılmış.";
             return redirect()->back()->withError($error)
                 ->withInput();
         }
+
+
         $request->validate([
             'name'        => 'required|max:50',
             'category_id' => 'required',
